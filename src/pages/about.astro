@@ -2,231 +2,750 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="關於 Taiwan.md" description="Taiwan.md 是開源、AI-friendly 的台灣知識庫">
+<Layout title="關於 Taiwan.md" description="Taiwan.md 的創站故事、創辦人介紹與聯繫方式">
   <div class="about-page">
-    <div class="container">
-      <header class="page-header">
-        <h1>關於 Taiwan.md</h1>
-        <p class="lead">開源、AI-friendly 的台灣完整知識庫</p>
-      </header>
 
-      <section class="about-content">
-        <div class="grid">
-          <div class="content-main">
-            <h2>我們的願景</h2>
-            <p>
-              Taiwan.md 致力於打造最完整、最準確、最易於理解的台灣知識庫。
-              我們相信，透過開放且結構化的方式分享知識，能夠促進對台灣的深度理解，
-              並讓全世界都能認識真正的台灣。
-            </p>
+    <!-- Section 1: Origin Story -->
+    <section class="origin-section">
+      <div class="section-inner">
+        <h1 class="section-title">Taiwan.md 的誕生</h1>
+        <p class="section-subtitle">從街頭散步的靈感，到為世界策展台灣的完整入口</p>
 
-            <h2>為什麼選擇 Taiwan.md？</h2>
-            <ul class="features-list">
-              <li>
-                <strong>策展式內容：</strong> 不是百科全書的堆疊，而是經過精心策展的深度內容
-              </li>
-              <li>
-                <strong>AI-Friendly：</strong> 結構化的內容設計，讓 AI 也能理解和傳播台灣文化
-              </li>
-              <li>
-                <strong>多層次閱讀：</strong> 30秒概覽 → 5分鐘深入 → 完整探索，適合不同需求
-              </li>
-              <li>
-                <strong>開源協作：</strong> 社群驅動，持續更新，確保內容的準確性與時效性
-              </li>
-            </ul>
+        <div class="origin-intro">
+          <blockquote class="origin-quote">
+            「創作如詩般耳目一新的組合，與搜集轉化想化為永恆的瞬間」
+          </blockquote>
+          <p class="quote-context">— 2026 年 3 月 11 日，台北街頭散步筆記</p>
+        </div>
 
-            <h2>內容範圍</h2>
-            <p>
-              Taiwan.md 涵蓋台灣的 12 個主要面向，從歷史文化到當代生活，
-              從自然地理到科技發展，呈現台灣的完整面貌。
-            </p>
+        <!-- Timeline -->
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-date">2026 / 03 / 11</div>
+            <div class="timeline-content">
+              <h3>靈感誕生</h3>
+              <p>
+                哲宇在台北街頭散步時，寫下了一段話，記錄了一個重要的轉變 —
+                從「造物主」到「詩人」的思維演化。不再執著於創造永恆不變的生命，
+                而是學會把正在消逝的瞬間，用心留住。
+              </p>
+            </div>
           </div>
 
-          <div class="sidebar">
-            <div class="stats-card">
-              <h3>專案統計</h3>
-              <div class="stat">
-                <div class="stat-number">12+</div>
-                <div class="stat-label">主要面向</div>
-              </div>
-              <div class="stat">
-                <div class="stat-number">100+</div>
-                <div class="stat-label">預計文章</div>
-              </div>
-              <div class="stat">
-                <div class="stat-number">雙語</div>
-                <div class="stat-label">中英對照</div>
-              </div>
-            </div>
-
-            <div class="contribute-card">
-              <h3>參與貢獻</h3>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-date">2026 / 03 / 17</div>
+            <div class="timeline-content">
+              <h3>一個更大的想法</h3>
               <p>
-                Taiwan.md 是社群驅動的開源專案，歡迎所有對台灣有興趣的朋友參與貢獻。
+                如果能幫台灣做同樣的事呢？把散落各處的台灣面貌，用策展的眼光整理成一個完整的入口，
+                分享給全世界。就在這個念頭出現的當天——
               </p>
-              <div class="cta-buttons">
-                <a href="/contributing" class="btn btn-primary">貢獻指南</a>
-                <a href="https://github.com/frank890417/taiwan-md" target="_blank" class="btn btn-secondary">
-                  GitHub
-                </a>
-              </div>
+              <ul class="timeline-list">
+                <li>購買了 taiwan.md 域名</li>
+                <li>建立了 Astro 專案架構</li>
+                <li>寫下了第一篇文章</li>
+                <li>建立了知識庫的基礎架構（20+ 個主題分類）</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker pulse"></div>
+            <div class="timeline-date">持續進行中</div>
+            <div class="timeline-content">
+              <h3>故事還在繼續</h3>
+              <p>
+                每一篇文章，都是我們想要永久保存的瞬間。每一個分類，都是我們想要分享給世界的台灣面貌。
+                每一個來到這裡的人，都是故事的一部分。
+              </p>
             </div>
           </div>
         </div>
-      </section>
-    </div>
+
+        <!-- Why Taiwan.md -->
+        <div class="naming-story">
+          <h2>為什麼叫 Taiwan.md？</h2>
+          <div class="naming-grid">
+            <div class="naming-card">
+              <div class="naming-icon">📝</div>
+              <h4>技術層面</h4>
+              <p><code>.md</code> = Markdown，程式碼世界裡最普遍的文件格式。用最適合 AI 理解的格式，讓全世界認識台灣。</p>
+            </div>
+            <div class="naming-card">
+              <div class="naming-icon">🌍</div>
+              <h4>象徵層面</h4>
+              <p><code>.md</code> 恰好是摩爾多瓦（Moldova）的國碼頂級域名。Taiwan + Markdown = 用開源精神連結世界。</p>
+            </div>
+            <div class="naming-card">
+              <div class="naming-icon">✨</div>
+              <h4>偶然的幸運</h4>
+              <p>令人驚訝的是，taiwan.md 這個域名居然沒有人搶先買下。或許是宇宙在告訴我們，這件事該做了。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vision -->
+        <div class="vision-block">
+          <p>
+            Taiwan.md 不只是一個網站。它是一封寫給世界的信。
+          </p>
+          <p>
+            我們相信，用開源的精神、策展的眼光、AI 友善的格式，可以為每一個想認識台灣的人 —
+            不管是人類還是 AI — 提供最完整、最有溫度的答案。
+          </p>
+          <p class="vision-emphasis">
+            這裡不是旅遊指南，不是政治宣傳，也不是商業廣告。<br>
+            這裡是台灣的數位人類學博物館，是文化的活化石，是正在發生的歷史記錄。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Founder -->
+    <section class="founder-section">
+      <div class="section-inner">
+        <h2 class="section-title">創辦人</h2>
+
+        <div class="founder-card">
+          <div class="founder-photo">
+            <div class="photo-placeholder">
+              <span class="photo-initials">CY</span>
+              <span class="photo-label">Che-Yu Wu</span>
+            </div>
+          </div>
+
+          <div class="founder-info">
+            <h3>吳哲宇 <span class="name-en">Che-Yu Wu</span></h3>
+            <p class="founder-tagline">新媒體藝術家 ・ MonoLab 創辦人 ・ Taiwan.md 發起人</p>
+
+            <div class="founder-bio">
+              <p>
+                哲宇是一位新媒體藝術家，相信演算法藝術不是讓電腦畫畫，而是設計生命的規則。
+                他的作品探索數位生命、數學之美與人機共生的可能性。
+              </p>
+              <blockquote class="founder-quote">
+                「我是古老的鐘錶匠，機制本身就是作品」
+              </blockquote>
+            </div>
+
+            <div class="founder-highlights">
+              <h4>國際藝術經歷</h4>
+              <div class="highlight-tags">
+                <span class="tag">威尼斯雙年展</span>
+                <span class="tag">Art Basel Miami</span>
+                <span class="tag">坎城 Immersive Market</span>
+                <span class="tag">巴黎 104 駐村</span>
+              </div>
+            </div>
+
+            <div class="founder-works">
+              <h4>代表作品</h4>
+              <ul>
+                <li><strong>萬物公式</strong>（台北 101 個展）— 全球最大規模 p5.js 生成藝術展</li>
+                <li><strong>靈魂魚</strong>（威尼斯雙年展）— 數位生命的集體智慧</li>
+                <li><strong>花的靈魂</strong>（Art Basel Miami）— 生命週期的演算美學</li>
+                <li><strong>瓶中的永恆花園</strong>（巴黎駐村作品）— 時間膠囊中的數位生態</li>
+                <li><strong>演算詩篇</strong>（沈浸式鋼琴演奏會）— 聲音與視覺的即時共生</li>
+              </ul>
+            </div>
+
+            <div class="founder-teaching">
+              <h4>教學影響力</h4>
+              <p>Hahow 線上課程超過 <strong>22,000</strong> 名學生 ・ 前陽明交大兼任講師 ・ TouchDesigner Workshop 講師</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="founder-motivation">
+          <h3>為什麼做 Taiwan.md？</h3>
+          <p>
+            在國際藝術場合，哲宇不斷被問：「台灣是什麼樣的地方？」
+          </p>
+          <p>
+            每一次，他都希望能指向一個完整、有溫度的入口，讓外國朋友真正認識台灣 —
+            不只是夜市和小籠包，而是這片土地上豐富的文化、創新的能量、以及人們的生活方式。
+          </p>
+          <p>但這樣的地方並不存在。</p>
+          <p class="motivation-emphasis">於是，Taiwan.md 誕生了。</p>
+        </div>
+
+        <div class="founder-links">
+          <a href="https://cheyuwu.com" target="_blank" class="link-card">
+            <span class="link-icon">🌐</span>
+            <span class="link-text">cheyuwu.com</span>
+            <span class="link-desc">個人網站</span>
+          </a>
+          <a href="https://muse.cheyuwu.com" target="_blank" class="link-card">
+            <span class="link-icon">🫧</span>
+            <span class="link-text">muse.cheyuwu.com</span>
+            <span class="link-desc">AI 協作作品</span>
+          </a>
+          <a href="https://github.com/frank890417" target="_blank" class="link-card">
+            <span class="link-icon">💻</span>
+            <span class="link-text">GitHub @frank890417</span>
+            <span class="link-desc">開源專案</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Contact -->
+    <section class="contact-section">
+      <div class="section-inner">
+        <h2 class="section-title">聯繫我們</h2>
+        <p class="section-subtitle">有任何想法、合作提案，或是想參與貢獻？歡迎聯繫。</p>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-icon">📧</div>
+            <h4>合作提案</h4>
+            <a href="mailto:cheyu.wu@monoame.com">cheyu.wu@monoame.com</a>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">🐙</div>
+            <h4>開源協作</h4>
+            <a href="https://github.com/frank890417/taiwan-md" target="_blank">frank890417/taiwan-md</a>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">📜</div>
+            <h4>授權方式</h4>
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-tw" target="_blank">CC BY-SA 4.0</a>
+            <p class="contact-note">自由分享，請標註出處</p>
+          </div>
+        </div>
+
+        <div class="contact-cta">
+          <p>Taiwan.md 是社群驅動的開源專案，歡迎所有對台灣有興趣的朋友參與。</p>
+          <div class="cta-buttons">
+            <a href="/contributing" class="btn btn-primary">貢獻指南</a>
+            <a href="https://github.com/frank890417/taiwan-md" target="_blank" class="btn btn-outline">
+              ⭐ Star on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
 </Layout>
 
 <style>
+  /* ===== Global ===== */
   .about-page {
-    min-height: 100vh;
-    padding: 2rem 0;
+    padding-bottom: 0;
   }
 
-  .container {
-    max-width: 1200px;
+  .section-inner {
+    max-width: 860px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1rem;
   }
 
-  .page-header {
-    text-align: center;
-    margin-bottom: 4rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #e5e7eb;
-  }
-
-  .page-header h1 {
-    font-size: 3rem;
+  .section-title {
+    font-size: 2.5rem;
     font-weight: 700;
     color: #1f2937;
-    margin-bottom: 1rem;
-  }
-
-  .lead {
-    font-size: 1.25rem;
-    color: #6b7280;
-    font-weight: 300;
-  }
-
-  .about-content {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 3rem;
-  }
-
-  .content-main {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #374151;
-  }
-
-  .content-main h2 {
-    font-size: 1.75rem;
-    font-weight: 600;
-    color: #1f2937;
-    margin: 2.5rem 0 1rem 0;
-  }
-
-  .content-main h2:first-of-type {
-    margin-top: 0;
-  }
-
-  .content-main p {
-    margin-bottom: 1.5rem;
-  }
-
-  .features-list {
-    list-style: none;
-    padding: 0;
-    margin: 2rem 0;
-  }
-
-  .features-list li {
-    margin-bottom: 1.5rem;
-    padding-left: 1.5rem;
-    position: relative;
-  }
-
-  .features-list li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: #059669;
-    font-weight: bold;
-  }
-
-  .sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .stats-card,
-  .contribute-card {
-    background: #f9fafb;
-    padding: 2rem;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
-  }
-
-  .stats-card h3,
-  .contribute-card h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #1f2937;
-    margin-bottom: 1.5rem;
-  }
-
-  .stat {
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
   }
 
-  .stat:last-child {
+  .section-subtitle {
+    text-align: center;
+    color: #6b7280;
+    font-size: 1.15rem;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+  }
+
+  /* ===== Section 1: Origin ===== */
+  .origin-section {
+    padding: 3rem 0 4rem;
+  }
+
+  .origin-section .section-title {
+    font-size: 2.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .origin-intro {
+    margin: 3rem 0;
+    text-align: center;
+  }
+
+  .origin-quote {
+    font-size: 1.35rem;
+    font-style: italic;
+    color: #1e40af;
+    border: none;
+    padding: 0;
+    margin: 0 auto 0.75rem;
+    max-width: 600px;
+    line-height: 1.8;
+  }
+
+  .quote-context {
+    font-size: 0.9rem;
+    color: #9ca3af;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    margin: 3rem 0 4rem;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, #1e40af, #3b82f6, #93c5fd);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .timeline-item:last-child {
     margin-bottom: 0;
   }
 
-  .stat-number {
-    font-size: 2rem;
-    font-weight: bold;
+  .timeline-marker {
+    position: absolute;
+    left: -2rem;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #1e40af;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px #1e40af;
+    z-index: 1;
+  }
+
+  .timeline-marker.pulse {
+    background: #3b82f6;
+    box-shadow: 0 0 0 2px #3b82f6;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 2px #3b82f6, 0 0 0 4px transparent; }
+    50% { box-shadow: 0 0 0 2px #3b82f6, 0 0 0 8px rgba(59, 130, 246, 0.2); }
+  }
+
+  .timeline-date {
+    font-size: 0.85rem;
+    font-weight: 600;
     color: #1e40af;
-    display: block;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
   }
 
-  .stat-label {
-    font-size: 0.9rem;
-    color: #6b7280;
+  .timeline-content h3 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
   }
 
-  .contribute-card p {
+  .timeline-content p {
+    color: #4b5563;
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+
+  .timeline-list {
+    margin-top: 0.75rem;
+    padding-left: 1.25rem;
+    color: #4b5563;
+    line-height: 2;
+  }
+
+  .timeline-list li {
+    font-size: 1rem;
+  }
+
+  /* Naming Story */
+  .naming-story {
+    margin: 4rem 0;
+  }
+
+  .naming-story h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1f2937;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .naming-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .naming-card {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.75rem;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .naming-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  }
+
+  .naming-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .naming-card h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+  }
+
+  .naming-card p {
     color: #6b7280;
     font-size: 0.95rem;
     line-height: 1.6;
+  }
+
+  .naming-card code {
+    background: #e0e7ff;
+    color: #1e40af;
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  /* Vision */
+  .vision-block {
+    background: linear-gradient(135deg, #eff6ff, #f0fdf4);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .vision-block p {
+    color: #374151;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .vision-block p:last-child {
+    margin-bottom: 0;
+  }
+
+  .vision-emphasis {
+    font-weight: 500;
+    color: #1f2937 !important;
+  }
+
+  /* ===== Section 2: Founder ===== */
+  .founder-section {
+    background: #f9fafb;
+    padding: 4rem 0;
+    margin: 0 -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .founder-card {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+
+  .founder-photo {
+    position: sticky;
+    top: 2rem;
+  }
+
+  .photo-placeholder {
+    width: 240px;
+    height: 300px;
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: white;
+    box-shadow: 0 8px 24px rgba(30, 64, 175, 0.15);
+  }
+
+  .photo-initials {
+    font-size: 3.5rem;
+    font-weight: 700;
+    opacity: 0.9;
+  }
+
+  .photo-label {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    letter-spacing: 0.05em;
+  }
+
+  .founder-info h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 0.25rem;
+  }
+
+  .name-en {
+    font-weight: 400;
+    color: #6b7280;
+    font-size: 1.1rem;
+  }
+
+  .founder-tagline {
+    color: #1e40af;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .founder-bio p {
+    color: #4b5563;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .founder-quote {
+    font-style: italic;
+    color: #1e40af;
+    border-left: 3px solid #1e40af;
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    margin: 1.25rem 0 1.5rem;
+    font-size: 1.05rem;
+  }
+
+  .founder-highlights,
+  .founder-works,
+  .founder-teaching {
+    margin-bottom: 1.5rem;
+  }
+
+  .founder-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+  }
+
+  .highlight-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    background: #e0e7ff;
+    color: #1e40af;
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .founder-works ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .founder-works li {
+    padding: 0.4rem 0;
+    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  .founder-works li:last-child {
+    border-bottom: none;
+  }
+
+  .founder-teaching p {
+    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Motivation */
+  .founder-motivation {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    border: 1px solid #e5e7eb;
+  }
+
+  .founder-motivation h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1.25rem;
+  }
+
+  .founder-motivation p {
+    color: #4b5563;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  .motivation-emphasis {
+    font-size: 1.2rem !important;
+    font-weight: 600;
+    color: #1e40af !important;
+    margin-top: 1rem !important;
+  }
+
+  /* Founder Links */
+  .founder-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .link-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 1.5rem;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .link-card:hover {
+    border-color: #1e40af;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.1);
+  }
+
+  .link-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .link-text {
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 0.95rem;
+  }
+
+  .link-desc {
+    color: #9ca3af;
+    font-size: 0.8rem;
+  }
+
+  /* ===== Section 3: Contact ===== */
+  .contact-section {
+    padding: 4rem 0 3rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .contact-card {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+  }
+
+  .contact-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-card h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-card a {
+    color: #1e40af;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    word-break: break-all;
+  }
+
+  .contact-card a:hover {
+    text-decoration: underline;
+  }
+
+  .contact-note {
+    color: #9ca3af;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+  }
+
+  .contact-cta {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #eff6ff, #f5f3ff);
+    border-radius: 16px;
+  }
+
+  .contact-cta p {
+    color: #4b5563;
+    font-size: 1.05rem;
     margin-bottom: 1.5rem;
   }
 
   .cta-buttons {
     display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
+    justify-content: center;
   }
 
   .btn {
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
     text-decoration: none;
-    border-radius: 6px;
-    font-weight: 500;
-    text-align: center;
     transition: all 0.2s;
-    font-size: 0.9rem;
   }
 
   .btn-primary {
@@ -237,36 +756,105 @@ import Layout from '../layouts/Layout.astro';
   .btn-primary:hover {
     background: #1d4ed8;
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
   }
 
-  .btn-secondary {
+  .btn-outline {
     background: white;
     color: #1e40af;
     border: 2px solid #1e40af;
   }
 
-  .btn-secondary:hover {
+  .btn-outline:hover {
     background: #1e40af;
     color: white;
     transform: translateY(-1px);
   }
 
+  /* ===== Responsive ===== */
   @media (max-width: 768px) {
-    .page-header h1 {
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .origin-section .section-title {
+      font-size: 2.25rem;
+    }
+
+    .origin-quote {
+      font-size: 1.15rem;
+    }
+
+    .naming-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .founder-card {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      justify-items: center;
+    }
+
+    .founder-photo {
+      position: static;
+    }
+
+    .photo-placeholder {
+      width: 180px;
+      height: 220px;
+    }
+
+    .photo-initials {
       font-size: 2.5rem;
     }
 
-    .grid {
+    .founder-links,
+    .contact-grid {
       grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .sidebar {
-      order: -1;
     }
 
     .cta-buttons {
-      flex-direction: row;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .vision-block {
+      padding: 1.75rem;
+    }
+
+    .founder-motivation {
+      padding: 1.75rem;
+    }
+
+    .highlight-tags {
+      justify-content: center;
+    }
+
+    .founder-info {
+      text-align: center;
+    }
+
+    .founder-works ul {
+      text-align: left;
+    }
+
+    .founder-quote {
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section-title {
+      font-size: 1.75rem;
+    }
+
+    .timeline {
+      padding-left: 1.5rem;
+    }
+
+    .timeline-item {
+      padding-left: 1rem;
     }
   }
 </style>
