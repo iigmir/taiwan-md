@@ -7,10 +7,10 @@ description: "台灣生活方式融合傳統與現代，創造獨特的島嶼文
 
 # 台灣生活 🏠
 
+台灣的生活是一首關於便利與溫情的協奏曲。當便利商店的密度達到全球第二，當機車穿梭在巷弄間成為最熟悉的風景，當全民健保讓每個人都能享有醫療保障時，台灣人創造出了一種獨特的生活方式：現代而不失溫度，便利而不失人情。這種生活哲學讓台灣成為許多國際遊客心中的「最適宜居住」之地。
+
 ![台北市街景](https://upload.wikimedia.org/wikipedia/commons/b/bf/Sec._1%2C_Hankou_Street%2C_Zhongzheng_District%2C_Taipei_City_%28Taiwan%29.JPG)
 *圖片來源：[Malcolm Koo](https://commons.wikimedia.org/wiki/File:Sec._1,_Hankou_Street,_Zhongzheng_District,_Taipei_City_(Taiwan).JPG) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
-
-> **30 秒概覽：** 台灣以全民健保覆蓋率99.9%、便利商店密度全球第二、機車普及率70%，創造獨特的生活型態。24小時便利商店、夜市文化、機車通勤，形成台灣人獨有的生活節奏。傳統人情味與現代便利性完美結合，展現小島的大幸福。
 
 ## 為什麼重要
 
