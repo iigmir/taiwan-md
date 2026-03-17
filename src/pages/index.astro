@@ -732,97 +732,143 @@ import CategoryGrid from '../components/CategoryGrid.astro';
     }
   }
 
-  /* Cover Story - 保持原樣 */
+  /* Cover Story - 策展級重設計 */
   .cover-story {
     padding: 5rem 2rem;
-    background: #fafbfc;
+    background: linear-gradient(180deg, #fff 0%, #f0f4f8 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-story::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #cbd5e1 10%, #3b82f6 50%, #cbd5e1 90%, transparent);
+    opacity: 0.4;
   }
   .cover-content {
-    max-width: 780px;
+    max-width: 800px;
     margin: 0 auto;
+    position: relative;
   }
   .cover-content h2 {
-    font-size: 2.2rem;
-    color: #1a1a2e;
-    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
     text-align: center;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
   }
   .cover-lead {
     text-align: center;
-    font-size: 1.15rem;
-    color: #475569;
-    line-height: 1.8;
-    margin-bottom: 3rem;
+    font-size: 1.2rem;
+    color: #334155;
+    line-height: 2;
+    margin-bottom: 3.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .quotes-timeline {
-    position: relative;
-    padding-left: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
   }
-  .quotes-timeline::before {
-    content: '';
-    position: absolute;
-    left: 0.75rem;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(180deg, #e2e8f0, #3b82f6, #e2e8f0);
+  @media (max-width: 768px) {
+    .quotes-timeline { grid-template-columns: 1fr; }
   }
   .quote-era {
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
     position: relative;
-    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+  .quote-era:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    border-color: #3b82f6;
   }
   .quote-era::before {
     content: '';
     position: absolute;
-    left: -2.35rem;
-    top: 0.5rem;
-    width: 10px;
-    height: 10px;
-    background: #3b82f6;
-    border-radius: 50%;
-    border: 2px solid #fff;
-    box-shadow: 0 0 0 2px #3b82f6;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+    border-radius: 4px 0 0 4px;
   }
+  .quote-era:nth-child(even)::before {
+    background: linear-gradient(180deg, #059669, #0d9488);
+  }
+  .quote-era:last-child {
+    grid-column: 1 / -1;
+    max-width: 500px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #1e3a5f, #1e40af);
+    border: none;
+    color: white;
+  }
+  .quote-era:last-child .era-label { color: #93c5fd; }
+  .quote-era:last-child blockquote { color: #e2e8f0; }
+  .quote-era:last-child cite { color: #93c5fd; }
+  .quote-era:last-child::before { background: #fbbf24; }
   .era-label {
     display: inline-block;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     color: #3b82f6;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
+    padding: 0.15rem 0.5rem;
+    background: #eff6ff;
+    border-radius: 4px;
   }
+  .quote-era:nth-child(even) .era-label { color: #059669; background: #ecfdf5; }
   .quote-era blockquote {
     margin: 0;
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     line-height: 1.7;
-    color: #334155;
+    color: #1e293b;
     font-style: italic;
   }
   .quote-era cite {
     display: block;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: #94a3b8;
     font-style: normal;
-    margin-top: 0.3rem;
+    margin-top: 0.5rem;
   }
   .cover-closing {
     margin-top: 3rem;
     text-align: center;
     font-size: 1.05rem;
-    line-height: 1.8;
+    line-height: 1.9;
     color: #475569;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .cover-closing strong { color: #1a1a2e; }
+  .cover-closing strong { color: #1e293b; }
   .cover-closing p { margin-bottom: 1rem; }
   .cover-link {
     display: inline-block;
     margin-top: 0.5rem;
     color: #3b82f6;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    transition: all 0.2s;
   }
-  .cover-link:hover { text-decoration: underline; }
+  .cover-link:hover { background: #3b82f6; color: white; }
 </style>
 
 <script>
