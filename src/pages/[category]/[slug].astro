@@ -57,37 +57,7 @@ export async function getStaticPaths() {
         console.log(`No Chinese folder found for ${folderName}:`, err.message);
       }
 
-      // 英文版本
-      const enFolderPath = resolve(process.cwd(), 'knowledge', 'en', folderName);
-      try {
-        const enFiles = await readdir(enFolderPath);
-        const enMarkdownFiles = enFiles.filter(file => file.endsWith('.md') && !file.startsWith('_'));
-        
-        for (const file of enMarkdownFiles) {
-          const filePath = join(enFolderPath, file);
-          const fileContent = await readFile(filePath, 'utf-8');
-          const { data: frontmatter, content } = matter(fileContent);
-          
-          // 檔案名稱作為 slug（去掉 .md）
-          const slug = basename(file, '.md');
-          
-          paths.push({
-            params: { 
-              category: categorySlug, 
-              slug: slug 
-            },
-            props: {
-              title: frontmatter.title || slug,
-              description: frontmatter.description || '',
-              content: content,
-              frontmatter: frontmatter,
-              lang: 'en'
-            }
-          });
-        }
-      } catch (err) {
-        console.log(`No English folder found for ${folderName}:`, err.message);
-      }
+      // English articles are served under /en/ routes only, skip here
       
     } catch (err) {
       console.log(`Error processing category ${categorySlug}:`, err.message);

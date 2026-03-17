@@ -88,13 +88,15 @@ export async function getStaticPaths() {
       // Category folder doesn't exist, continue
     }
 
+    // Only show Chinese articles on main category pages
+    const zhArticles = articles.filter(a => a.lang === 'zh-TW');
+    
     paths.push({
       params: { category },
       props: { 
         categoryInfo: categoryConfig[category as CategoryKey],
         category,
-        articles: articles.sort((a, b) => {
-          // Sort by featured first, then by title
+        articles: zhArticles.sort((a, b) => {
           if (a.featured && !b.featured) return -1;
           if (!a.featured && b.featured) return 1;
           return a.title.localeCompare(b.title);
