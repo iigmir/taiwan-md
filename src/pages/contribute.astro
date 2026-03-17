@@ -35,6 +35,156 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </section>
 
+    <!-- 新增的寫作指南區塊 -->
+    <section class="writing-guides">
+      <div class="guides-inner">
+        <h2>📖 貢獻指南大全</h2>
+        <p class="guides-desc">無論你的背景和專長，我們都有最適合你的貢獻方式</p>
+        
+        <div class="guides-grid">
+          
+          <div class="guide-card writing">
+            <div class="guide-icon">✍️</div>
+            <h3>如何寫一篇好文章</h3>
+            <div class="guide-content">
+              <h4>📐 結構建議</h4>
+              <ul>
+                <li><strong>標題：</strong>直白有力，避免太長（如：台灣夜市文化）</li>
+                <li><strong>開頭：</strong>一句話說明這是什麼、為什麼重要</li>
+                <li><strong>主體：</strong>用故事、數據、實例來支撐</li>
+                <li><strong>結尾：</strong>總結意義或提供延伸連結</li>
+              </ul>
+              
+              <h4>📝 格式規範</h4>
+              <ul>
+                <li>用 <code>##</code> 來分段，<code>###</code> 來分小節</li>
+                <li>重要詞彙用 <code>**粗體**</code></li>
+                <li>引用用 <code>> 引用文字</code></li>
+                <li>列表用 <code>- 項目</code> 或 <code>1. 編號</code></li>
+                <li>連結格式：<code>[連結文字](URL)</code></li>
+              </ul>
+              
+              <h4>💡 範例段落</h4>
+              <pre><code>## 夜市的起源
+
+台灣的夜市文化起源於**清朝時期的廟會市集**。最初，商販會在寺廟節慶時聚集擺攤，販售各種小吃和日用品。
+
+> 「一府二鹿三艋舺」的台灣古諺中，每個地方都有自己獨特的市集文化。
+
+現今最有名的夜市包括：
+- **士林夜市**（台北）
+- **逢甲夜市**（台中）  
+- **六合夜市**（高雄）
+
+[深入了解夜市文化](/food/night-markets)</code></pre>
+            </div>
+          </div>
+
+          <div class="guide-card ai">
+            <div class="guide-icon">🤖</div>
+            <h3>AI 輔助貢獻</h3>
+            <div class="guide-content">
+              <h4>📋 完整 Prompt 模板</h4>
+              <div class="ai-prompt-box">
+                <code>我想為 Taiwan.md（https://taiwan.md）開源台灣知識庫貢獻內容。
+
+請先：
+1. 讀取 https://taiwan.md/llms.txt 了解專案結構
+2. 讀取 https://taiwan.md/contributing 了解編輯方針
+3. 瀏覽現有的文章分類和寫作風格
+
+然後引導我完成以下流程：
+1. 確認我想寫的主題：【你的主題】
+2. 檢查是否已有相關文章，避免重複
+3. 規劃文章結構和大綱
+4. 協助我寫成符合規範的 Markdown 格式
+5. 建議合適的分類標籤和相關連結
+6. 檢查內容的準確性和中性觀點
+
+我的知識背景：【描述你的專長領域】
+想寫的主題：【具體主題，如：台灣coffee culture發展史】</code>
+                <button class="copy-btn" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent).then(()=>this.textContent='✅ 已複製')">📋 複製</button>
+              </div>
+
+              <h4>🎯 專業領域 AI 提示</h4>
+              <ul>
+                <li><strong>歷史學者：</strong>「幫我查證這段台灣歷史的多重史料觀點」</li>
+                <li><strong>文化工作者：</strong>「協助我用國際視角介紹這個台灣文化現象」</li>
+                <li><strong>技術專家：</strong>「幫我用非技術語言解釋台灣的科技發展」</li>
+                <li><strong>在地居民：</strong>「協助我將家鄉故事整理成結構化的文章」</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="guide-card translation">
+            <div class="guide-icon">🌍</div>
+            <h3>翻譯指南</h3>
+            <div class="guide-content">
+              <h4>🎯 中→英翻譯要點</h4>
+              <ul>
+                <li><strong>文化詞彙：</strong>保留原文加註解（如：<em>jiufen (九份)</em>）</li>
+                <li><strong>專有名詞：</strong>統一使用正式英文名稱</li>
+                <li><strong>食物名稱：</strong>音譯+說明（<em>xiaolongbao (soup dumplings)</em>）</li>
+                <li><strong>歷史事件：</strong>使用國際通用的英文名稱</li>
+              </ul>
+
+              <h4>📚 參考資源</h4>
+              <ul>
+                <li><a href="http://www.taiwan.gov.tw/" target="_blank">Taiwan.gov.tw</a> - 官方用詞</li>
+                <li><a href="https://www.mofa.gov.tw/en/" target="_blank">外交部英文網站</a> - 政治用詞</li>
+                <li><a href="https://www.taiwan.net.tw/m1.aspx?sNo=0001019" target="_blank">觀光局</a> - 地名景點</li>
+              </ul>
+
+              <h4>⚠️ 翻譯注意事項</h4>
+              <ul>
+                <li>保持中性客觀的敘述角度</li>
+                <li>避免過度本土化的表達方式</li>
+                <li>敏感政治話題需要特別謹慎</li>
+                <li>數字和日期格式要符合國際慣例</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="guide-card images">
+            <div class="guide-icon">📸</div>
+            <h3>圖片規範</h3>
+            <div class="guide-content">
+              <h4>✅ 可用圖片來源</h4>
+              <ul>
+                <li><strong>Wikimedia Commons：</strong>首選，大量台灣相關 CC 授權圖片</li>
+                <li><strong>自己拍攝：</strong>最佳選擇，記得聲明原創</li>
+                <li><strong>政府開放資料：</strong>多數可自由使用</li>
+                <li><strong>CC 授權圖片：</strong>需標註來源和授權方式</li>
+              </ul>
+
+              <h4>🔍 推薦資源</h4>
+              <ul>
+                <li><a href="https://commons.wikimedia.org/wiki/Category:Taiwan" target="_blank">Wikimedia Taiwan 分類</a></li>
+                <li><a href="https://data.gov.tw/" target="_blank">政府資料開放平台</a></li>
+                <li><a href="https://unsplash.com/s/photos/taiwan" target="_blank">Unsplash Taiwan</a></li>
+                <li><a href="https://www.pexels.com/search/taiwan/" target="_blank">Pexels Taiwan</a></li>
+              </ul>
+
+              <h4>📝 使用格式</h4>
+              <pre><code>![圖片描述](圖片連結)
+
+*圖片說明文字*
+*來源：[Wikimedia Commons](連結) / CC BY-SA 4.0*</code></pre>
+
+              <h4>❌ 不可使用</h4>
+              <ul>
+                <li>Google 圖片搜尋的隨意圖片</li>
+                <li>沒有授權的商業攝影</li>
+                <li>他人社群媒體的照片</li>
+                <li>著作權不明的歷史照片</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <section class="paths">
       <div class="paths-inner">
         <h2>選擇你的方式</h2>
@@ -201,35 +351,175 @@ import Layout from '../layouts/Layout.astro';
 </script>
 
 <style>
+  /* 全域設置 - 明體字型和自然配色 */
+  body {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 600;
+  }
+
   .contribute-hero {
     text-align: center;
     padding: 4rem 2rem;
-    background: linear-gradient(135deg, #0f172a, #1e3a5f);
+    background: linear-gradient(135deg, #2D5016, #4A7C59);
     color: white;
   }
-  .contribute-hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  .contribute-hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 700; }
   .hero-sub { font-size: 1.15rem; opacity: 0.85; max-width: 500px; margin: 0 auto; }
 
-  .how-it-works { padding: 3rem 2rem; background: #f0f4ff; }
+  .how-it-works { 
+    padding: 3rem 2rem; 
+    background: linear-gradient(to bottom, #F7F3E9, #E8F5E8);
+  }
   .how-inner { max-width: 1000px; margin: 0 auto; }
-  .how-inner h2 { text-align: center; margin-bottom: 1.5rem; }
+  .how-inner h2 { text-align: center; margin-bottom: 1.5rem; color: #2D5016; }
   .how-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
   .how-card {
-    background: white; padding: 1.5rem; border-radius: 12px;
-    border: 1px solid #e2e8f0;
+    background: rgba(255, 255, 255, 0.9); 
+    padding: 1.5rem; 
+    border-radius: 16px;
+    border: 2px solid #A7C4A0;
+    backdrop-filter: blur(10px);
   }
-  .how-card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
-  .how-card p { font-size: 0.9rem; color: #475569; line-height: 1.6; }
-  .how-card code { display: block; margin-top: 0.5rem; font-size: 0.8rem; color: #3b82f6; background: #f8fafc; padding: 0.5rem; border-radius: 6px; }
-  .how-card a { color: #3b82f6; }
+  .how-card h3 { font-size: 1rem; margin-bottom: 0.4rem; color: #2D5016; }
+  .how-card p { font-size: 0.9rem; color: #4A5D23; line-height: 1.6; }
+  .how-card code { 
+    display: block; 
+    margin-top: 0.5rem; 
+    font-size: 0.8rem; 
+    color: #2D5016; 
+    background: rgba(167, 196, 160, 0.2); 
+    padding: 0.5rem; 
+    border-radius: 6px; 
+  }
+  .how-card a { color: #4A7C59; }
   @media (max-width: 768px) { .how-grid { grid-template-columns: 1fr; } }
 
-  .path-card.ai { border-color: #8b5cf6; }
-  .path-card.ai .path-badge { background: #8b5cf6; }
+  /* 新增的寫作指南區塊 */
+  .writing-guides {
+    padding: 4rem 2rem;
+    background: rgba(232, 245, 232, 0.3);
+  }
+  
+  .guides-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .guides-inner h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #2D5016;
+    font-weight: 700;
+  }
+  
+  .guides-desc {
+    text-align: center;
+    color: #4A5D23;
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .guides-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  @media (max-width: 968px) {
+    .guides-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+  
+  .guide-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #A7C4A0;
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(45, 80, 22, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .guide-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(45, 80, 22, 0.15);
+  }
+  
+  .guide-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .guide-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: #2D5016;
+    text-align: center;
+    font-weight: 700;
+  }
+  
+  .guide-content h4 {
+    color: #4A7C59;
+    margin: 1.5rem 0 0.8rem 0;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  
+  .guide-content ul {
+    margin: 0.5rem 0 1rem 1rem;
+    padding: 0;
+  }
+  
+  .guide-content li {
+    margin-bottom: 0.5rem;
+    color: #4A5D23;
+    line-height: 1.6;
+  }
+  
+  .guide-content pre {
+    background: rgba(74, 124, 89, 0.1);
+    border: 1px solid #A7C4A0;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+  }
+  
+  .guide-content pre code {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: #2D5016;
+    white-space: pre-wrap;
+  }
+  
+  .ai-prompt-box {
+    position: relative;
+    background: rgba(74, 124, 89, 0.1);
+    border: 2px solid #A7C4A0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .ai-prompt-box code {
+    display: block;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #2D5016;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .path-card.ai { border-color: #8B7BA5; }
+  .path-card.ai .path-badge { background: #8B7BA5; }
   .ai-prompt {
     position: relative;
-    background: #f8f5ff;
-    border: 1px solid #ddd6fe;
+    background: rgba(139, 123, 165, 0.1);
+    border: 1px solid #8B7BA5;
     border-radius: 8px;
     padding: 1rem;
     margin: 0.75rem 0;
@@ -238,7 +528,7 @@ import Layout from '../layouts/Layout.astro';
     display: block;
     font-size: 0.8rem;
     line-height: 1.6;
-    color: #4c1d95;
+    color: #4A2C5B;
     white-space: pre-wrap;
     word-break: break-word;
   }
@@ -246,129 +536,179 @@ import Layout from '../layouts/Layout.astro';
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-    background: #8b5cf6;
+    background: #4A7C59;
     color: white;
     border: none;
     border-radius: 6px;
     padding: 0.3rem 0.6rem;
     font-size: 0.75rem;
     cursor: pointer;
+    font-weight: 600;
   }
-  .copy-btn:hover { background: #7c3aed; }
+  .copy-btn:hover { background: #2D5016; }
 
-  .paths { padding: 4rem 2rem; background: #fff; }
+  .paths { 
+    padding: 4rem 2rem; 
+    background: rgba(247, 243, 233, 0.5); 
+  }
   .paths-inner { max-width: 1100px; margin: 0 auto; }
-  .paths h2 { text-align: center; font-size: 1.5rem; margin-bottom: 2rem; }
+  .paths h2 { text-align: center; font-size: 1.5rem; margin-bottom: 2rem; color: #2D5016; font-weight: 700; }
   .path-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
   @media (max-width: 1024px) { .path-grid { grid-template-columns: repeat(2, 1fr); } }
   .path-card {
     padding: 2rem;
     border-radius: 16px;
-    border: 1px solid #e2e8f0;
+    border: 2px solid #A7C4A0;
     display: flex;
     flex-direction: column;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
   }
-  .path-card.easy { border-color: #22c55e; background: #f0fdf4; }
-  .path-card.medium { background: #fefce8; border-color: #eab308; }
-  .path-card.dev { background: #fef2f2; border-color: #ef4444; }
+  .path-card.easy { 
+    border-color: #6B8E23; 
+    background: rgba(171, 196, 104, 0.1); 
+  }
+  .path-card.medium { 
+    background: rgba(218, 165, 32, 0.1); 
+    border-color: #DAA520; 
+  }
+  .path-card.dev { 
+    background: rgba(205, 92, 92, 0.1); 
+    border-color: #CD5C5C; 
+  }
   .path-badge {
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 0.75rem;
+    background: #4A7C59;
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 12px;
+    display: inline-block;
+    width: fit-content;
   }
-  .path-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
-  .path-card p { color: #475569; font-size: 0.9rem; line-height: 1.6; }
+  .path-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: #2D5016; font-weight: 700; }
+  .path-card p { color: #4A5D23; font-size: 0.9rem; line-height: 1.6; }
   .path-card ul { list-style: none; padding: 0; margin: 1rem 0; font-size: 0.85rem; }
-  .path-card li { padding: 0.25rem 0; }
+  .path-card li { padding: 0.25rem 0; color: #4A5D23; }
   .path-btn {
     display: inline-block;
     padding: 0.65rem 1.25rem;
     border-radius: 8px;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.9rem;
     margin-top: auto;
     text-align: center;
+    transition: all 0.2s ease;
   }
-  .path-btn.primary { background: #1a1a2e; color: white; }
-  .path-btn.secondary { background: rgba(0,0,0,0.06); color: #1a1a2e; }
+  .path-btn.primary { 
+    background: #2D5016; 
+    color: white; 
+  }
+  .path-btn.primary:hover { 
+    background: #4A7C59; 
+  }
+  .path-btn.secondary { 
+    background: rgba(74, 124, 89, 0.1); 
+    color: #2D5016; 
+    border: 1px solid #A7C4A0;
+  }
+  .path-btn.secondary:hover { 
+    background: rgba(74, 124, 89, 0.2); 
+  }
 
   .form-section {
     padding: 4rem 2rem;
-    background: #f8fafc;
+    background: rgba(232, 245, 232, 0.3);
   }
   .form-inner {
     max-width: 680px;
     margin: 0 auto;
   }
-  .form-inner h2 { text-align: center; margin-bottom: 0.5rem; }
-  .form-desc { text-align: center; color: #64748b; margin-bottom: 2rem; }
+  .form-inner h2 { text-align: center; margin-bottom: 0.5rem; color: #2D5016; font-weight: 700; }
+  .form-desc { text-align: center; color: #4A5D23; margin-bottom: 2rem; }
   .form-group { margin-bottom: 1.25rem; }
   .form-group label {
     display: block;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.9rem;
     margin-bottom: 0.4rem;
-    color: #1a1a2e;
+    color: #2D5016;
   }
-  .required { color: #ef4444; }
+  .required { color: #CD5C5C; }
   textarea, input, select {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid #d1d5db;
+    border: 2px solid #A7C4A0;
     border-radius: 8px;
     font-size: 0.95rem;
-    font-family: inherit;
+    font-family: "Noto Serif TC", serif;
+    font-weight: 600;
     transition: border-color 0.15s;
+    background: rgba(255, 255, 255, 0.9);
   }
   textarea:focus, input:focus, select:focus {
     outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    border-color: #4A7C59;
+    box-shadow: 0 0 0 3px rgba(74, 124, 89, 0.1);
   }
   textarea { resize: vertical; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .submit-btn {
     width: 100%;
     padding: 0.85rem;
-    background: #1a1a2e;
+    background: #2D5016;
     color: white;
     border: none;
     border-radius: 8px;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     margin-top: 0.5rem;
     transition: background 0.15s;
+    font-family: "Noto Serif TC", serif;
   }
-  .submit-btn:hover { background: #3b82f6; }
+  .submit-btn:hover { background: #4A7C59; }
   .success-msg {
     text-align: center;
     padding: 3rem;
-    background: #f0fdf4;
+    background: rgba(171, 196, 104, 0.1);
     border-radius: 16px;
+    border: 2px solid #ABC468;
   }
   .success-icon { font-size: 3rem; }
-  .success-msg h3 { margin: 1rem 0 0.5rem; }
-  .success-msg p { color: #64748b; }
-  .back-link { color: #3b82f6; text-decoration: none; display: inline-block; margin-top: 1rem; }
+  .success-msg h3 { margin: 1rem 0 0.5rem; color: #2D5016; font-weight: 700; }
+  .success-msg p { color: #4A5D23; }
+  .back-link { color: #4A7C59; text-decoration: none; display: inline-block; margin-top: 1rem; font-weight: 600; }
 
-  .ideas { padding: 4rem 2rem; }
+  .ideas { 
+    padding: 4rem 2rem; 
+    background: rgba(247, 243, 233, 0.3);
+  }
   .ideas-inner { max-width: 900px; margin: 0 auto; }
-  .ideas h2 { text-align: center; margin-bottom: 1.5rem; }
+  .ideas h2 { text-align: center; margin-bottom: 1.5rem; color: #2D5016; font-weight: 700; }
   .ideas-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
   .idea {
     padding: 1.25rem;
-    background: #f8fafc;
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 12px;
     font-size: 0.95rem;
-    border: 1px solid #e2e8f0;
+    border: 2px solid #A7C4A0;
+    color: #4A5D23;
+    backdrop-filter: blur(10px);
   }
 
-  a { color: #3b82f6; }
-  code { background: #f1f5f9; padding: 0.15rem 0.4rem; border-radius: 3px; font-size: 0.85rem; }
+  a { color: #4A7C59; font-weight: 600; }
+  code { 
+    background: rgba(167, 196, 160, 0.2); 
+    padding: 0.15rem 0.4rem; 
+    border-radius: 3px; 
+    font-size: 0.85rem; 
+    color: #2D5016;
+  }
 
   @media (max-width: 768px) {
     .path-grid { grid-template-columns: 1fr; }
