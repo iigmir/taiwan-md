@@ -1,0 +1,56 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  url?: string;
+  lang?: 'zh-TW' | 'en';
+  type?: 'website' | 'article';
+}
+
+const { 
+  title, 
+  description = '讓全世界完整認識台灣 - 開源台灣知識庫，蒐集關於台灣的政治、經濟、文化、歷史、地理等各方面知識。', 
+  image = '/images/taiwan-social.jpg',
+  url = Astro.url.href,
+  lang = 'zh-TW',
+  type = 'website'
+} = Astro.props;
+
+const fullTitle = `${title} | Taiwan.md`;
+const siteUrl = 'https://taiwan.md';
+const fullImageUrl = new URL(image, siteUrl).href;
+---
+
+<!-- Basic Meta Tags -->
+<meta name="description" content={description} />
+<meta name="keywords" content="台灣, Taiwan, 台灣知識庫, 台灣歷史, 台灣文化, 台灣政治, 台灣經濟" />
+<meta name="author" content="Taiwan.md" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={url} />
+
+<!-- Language Tags -->
+<link rel="alternate" hreflang="zh-TW" href={siteUrl} />
+<link rel="alternate" hreflang="en" href={`${siteUrl}/en`} />
+<link rel="alternate" hreflang="x-default" href={siteUrl} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={url} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={fullImageUrl} />
+<meta property="og:site_name" content="Taiwan.md" />
+<meta property="og:locale" content={lang === 'zh-TW' ? 'zh_TW' : 'en_US'} />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={url} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={fullImageUrl} />
+
+<!-- Additional SEO -->
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />

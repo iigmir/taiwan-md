@@ -1,8 +1,10 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://taiwan.md',
+  integrations: [sitemap()],
   i18n: {
     defaultLocale: 'zh-TW',
     locales: ['zh-TW', 'en'],

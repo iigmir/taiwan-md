@@ -1,21 +1,27 @@
 ---
+import SEO from '../components/SEO.astro';
+
 interface Props {
   title: string;
   description?: string;
   lang?: 'zh-TW' | 'en';
+  image?: string;
+  type?: 'website' | 'article';
 }
 
-const { title, description = '讓全世界完整認識台灣', lang = 'zh-TW' } = Astro.props;
+const { title, description = '讓全世界完整認識台灣', lang = 'zh-TW', image, type } = Astro.props;
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} | Taiwan.md</title>
+    
+    <!-- SEO Meta Tags -->
+    <SEO title={title} description={description} lang={lang} image={image} type={type} />
     <!-- Google Analytics -->
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-JGC5W00N7T"></script>
     <script is:inline>
