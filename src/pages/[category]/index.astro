@@ -130,6 +130,24 @@ import { getCategoryConfig } from '../../utils/categoryConfig';
 import { marked } from 'marked';
 const { categoryInfo, category, hubContent, articles } = Astro.props;
 
+// Load economic data for economy category
+let taiexData: any[] = [];
+let cpiData: any[] = [];
+let salaryData: any[] = [];
+let housingData: any[] = [];
+if (category === 'economy') {
+  const [taiexJson, cpiJson, salaryJson, housingJson] = await Promise.all([
+    import('../../data/taiex-yearly.json'),
+    import('../../data/taiwan-cpi.json'),
+    import('../../data/taiwan-salary.json'),
+    import('../../data/taiwan-housing.json'),
+  ]);
+  taiexData = taiexJson.data;
+  cpiData = cpiJson.data;
+  salaryData = salaryJson.data;
+  housingData = housingJson.data;
+}
+
 // Convert [[wikilinks]] to HTML links before marked parsing
 function resolveWikilinks(md: string, currentCategory: string): string {
   if (!md) return md;
@@ -155,6 +173,22 @@ function resolveWikilinks(md: string, currentCategory: string): string {
 
 const resolvedContent = hubContent ? resolveWikilinks(hubContent, category) : '';
 const hubHtml = resolvedContent ? marked.parse(resolvedContent) : '';
+
+// Split hub HTML into sections at <h2> boundaries for chart injection (economy only)
+const isEconomy = category === 'economy';
+type HubSection = { html: string; chartAfter?: string };
+let hubSections: HubSection[] = [];
+if (isEconomy && hubHtml) {
+  const parts = (hubHtml as string).split(/(?=<h2>)/);
+  hubSections = parts.map(part => {
+    let chartAfter: string | undefined;
+    if (part.includes('從零到英雄')) chartAfter = 'cpi';
+    else if (part.includes('矽島的誕生')) chartAfter = 'taiex';
+    else if (part.includes('服務經濟')) chartAfter = 'salary';
+    else if (part.includes('面向未來')) chartAfter = 'housing';
+    return { html: part, chartAfter };
+  });
+}
 
 // 其他分類（跨分類導航用）
 const otherCategories = Object.keys(categoryConfig)
@@ -195,7 +229,62 @@ const otherCategories = Object.keys(categoryConfig)
       <!-- Hub Content (curated overview) -->
       {hubHtml && (
         <section class="hub-content">
-          <div class="hub-prose" set:html={hubHtml} />
+          {isEconomy ? (
+            hubSections.map(section => (
+              <>
+                <div class="hub-prose" set:html={section.html} />
+                {section.chartAfter === 'cpi' && (
+                  <div class="econ-chart-section">
+                    <h3 class="econ-chart-title">📊 消費者物價指數（CPI）</h3>
+                    <p class="econ-chart-subtitle">Consumer Price Index（基期 2021=100）1981 - 2025</p>
+                    <div class="econ-chart-container" id="cpi-chart">
+                      <svg class="econ-svg" data-chart="cpi" width="100%" height="320"></svg>
+                      <div class="econ-tooltip"></div>
+                    </div>
+                    <p class="econ-chart-note">台灣長期維持溫和的物價水準，年均通膨率約 1.5%，遠低於多數已開發國家。</p>
+                    <p class="econ-chart-source">資料來源：行政院主計總處</p>
+                  </div>
+                )}
+                {section.chartAfter === 'taiex' && (
+                  <div class="econ-chart-section">
+                    <h3 class="econ-chart-title">📈 歷年台股加權指數</h3>
+                    <p class="econ-chart-subtitle">Taiwan Stock Exchange Weighted Index（TAIEX）1967 - 2025</p>
+                    <div class="econ-chart-container" id="taiex-chart">
+                      <svg class="econ-svg" data-chart="taiex" width="100%" height="320"></svg>
+                      <div class="econ-tooltip"></div>
+                    </div>
+                    <p class="econ-chart-source">資料來源：臺灣證券交易所（TWSE）歷年收盤價</p>
+                  </div>
+                )}
+                {section.chartAfter === 'salary' && (
+                  <div class="econ-chart-section">
+                    <h3 class="econ-chart-title">💰 經常性薪資變化</h3>
+                    <p class="econ-chart-subtitle">Average Monthly Regular Earnings（NTD）1981 - 2025</p>
+                    <div class="econ-chart-container" id="salary-chart">
+                      <svg class="econ-svg" data-chart="salary" width="100%" height="320"></svg>
+                      <div class="econ-tooltip"></div>
+                    </div>
+                    <p class="econ-chart-note">2003 年後薪資成長明顯趨緩，扣除物價漲幅後的「實質薪資」幾乎停滯近二十年。</p>
+                    <p class="econ-chart-source">資料來源：行政院主計總處 薪資與生產力統計</p>
+                  </div>
+                )}
+                {section.chartAfter === 'housing' && (
+                  <div class="econ-chart-section">
+                    <h3 class="econ-chart-title">🏠 房價指數走勢</h3>
+                    <p class="econ-chart-subtitle">Sinyi Housing Price Index（基期 2016Q1=100）2001 - 2025</p>
+                    <div class="econ-chart-container" id="housing-chart">
+                      <svg class="econ-svg" data-chart="housing" width="100%" height="320"></svg>
+                      <div class="econ-tooltip"></div>
+                    </div>
+                    <p class="econ-chart-note">2020 年起房價快速攀升，全國房價指數在五年內上漲逾 44%，「居住正義」成為社會核心議題。</p>
+                    <p class="econ-chart-source">資料來源：信義房屋不動產企研室</p>
+                  </div>
+                )}
+              </>
+            ))
+          ) : (
+            <div class="hub-prose" set:html={hubHtml} />
+          )}
         </section>
       )}
 
@@ -504,6 +593,67 @@ const otherCategories = Object.keys(categoryConfig)
     margin: 2.5rem 0;
   }
 
+  /* Economic Charts (shared) */
+  .econ-chart-section {
+    margin: 2.5rem 0;
+    padding: 2rem 1.5rem;
+    background: #f8fafc;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+  }
+  .econ-chart-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 0 0 0.3rem;
+    text-align: center;
+  }
+  .econ-chart-subtitle {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-align: center;
+    margin: 0 0 1.2rem;
+  }
+  .econ-chart-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+  }
+  .econ-svg {
+    display: block;
+  }
+  .econ-tooltip {
+    position: absolute;
+    display: none;
+    background: rgba(30, 41, 59, 0.92);
+    color: #fff;
+    padding: 0.5rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .econ-chart-note {
+    font-size: 0.85rem;
+    color: #64748b;
+    text-align: center;
+    margin: 1rem 0 0.25rem;
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .econ-chart-source {
+    font-size: 0.72rem;
+    color: #94a3b8;
+    text-align: right;
+    margin: 0.5rem 0 0;
+  }
+
   .articles-heading {
     font-size: 1.4rem;
     margin: 0 0 1.5rem 0;
@@ -772,6 +922,13 @@ const otherCategories = Object.keys(categoryConfig)
     font-size: 1.1rem;
   }
 
+  @media (max-width: 768px) {
+    .econ-chart-section {
+      margin: 1.5rem -0.5rem;
+      padding: 1.2rem 0.8rem;
+    }
+  }
+
   /* Responsive */
   @media (max-width: 768px) {
     .hero-banner {
@@ -808,3 +965,207 @@ const otherCategories = Object.keys(categoryConfig)
     }
   }
 </style>
+
+{isEconomy && (
+  <script define:vars={{ taiexData, cpiData, salaryData, housingData }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const ns = 'http://www.w3.org/2000/svg';
+
+      function createChart(cfg) {
+        const svg = cfg.svg;
+        const tooltip = cfg.tooltip;
+        const container = svg.parentElement;
+        if (!svg || !tooltip) return;
+
+        const data = cfg.data;
+        const color = cfg.color;
+        const valueKey = cfg.valueKey || 'value';
+        const rect = container.getBoundingClientRect();
+        const width = rect.width;
+        const height = parseInt(svg.getAttribute('height')) || 320;
+        const margin = { top: 20, right: 20, bottom: 36, left: 55 };
+        const innerW = width - margin.left - margin.right;
+        const innerH = height - margin.top - margin.bottom;
+
+        svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+        svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+
+        const minYear = data[0].year;
+        const maxYear = data[data.length - 1].year;
+        const vals = data.map(d => d[valueKey]);
+        const maxVal = Math.max(...vals);
+        const minVal = Math.min(...vals);
+        const yPad = (maxVal - minVal) * 0.1 || maxVal * 0.1;
+        const yMin = Math.max(0, minVal - yPad);
+        const yMax = maxVal + yPad;
+
+        const xScale = (year) => margin.left + ((year - minYear) / (maxYear - minYear)) * innerW;
+        const yScale = (val) => margin.top + innerH - ((val - yMin) / (yMax - yMin)) * innerH;
+
+        // Gradient
+        const defs = document.createElementNS(ns, 'defs');
+        const gradId = cfg.id + '-grad';
+        const grad = document.createElementNS(ns, 'linearGradient');
+        grad.id = gradId;
+        grad.setAttribute('x1', '0'); grad.setAttribute('y1', '0');
+        grad.setAttribute('x2', '0'); grad.setAttribute('y2', '1');
+        const s1 = document.createElementNS(ns, 'stop');
+        s1.setAttribute('offset', '0%'); s1.setAttribute('stop-color', color); s1.setAttribute('stop-opacity', '0.25');
+        const s2 = document.createElementNS(ns, 'stop');
+        s2.setAttribute('offset', '100%'); s2.setAttribute('stop-color', color); s2.setAttribute('stop-opacity', '0.02');
+        grad.appendChild(s1); grad.appendChild(s2);
+        defs.appendChild(grad); svg.appendChild(defs);
+
+        // Grid lines
+        const gridG = document.createElementNS(ns, 'g');
+        const tickCount = 5;
+        for (let i = 0; i <= tickCount; i++) {
+          const val = yMin + (yMax - yMin) * (i / tickCount);
+          const y = yScale(val);
+          const line = document.createElementNS(ns, 'line');
+          line.setAttribute('x1', margin.left); line.setAttribute('x2', width - margin.right);
+          line.setAttribute('y1', y); line.setAttribute('y2', y);
+          line.setAttribute('stroke', '#e2e8f0'); line.setAttribute('stroke-width', '1');
+          gridG.appendChild(line);
+          const label = document.createElementNS(ns, 'text');
+          label.setAttribute('x', margin.left - 8); label.setAttribute('y', y + 4);
+          label.setAttribute('text-anchor', 'end'); label.setAttribute('fill', '#94a3b8');
+          label.setAttribute('font-size', '10');
+          label.textContent = cfg.yFormat ? cfg.yFormat(val) : Math.round(val).toLocaleString();
+          gridG.appendChild(label);
+        }
+        svg.appendChild(gridG);
+
+        // X-axis
+        const xG = document.createElementNS(ns, 'g');
+        const yearSpan = maxYear - minYear;
+        const step = yearSpan <= 25 ? 5 : 10;
+        const startTick = Math.ceil(minYear / step) * step;
+        for (let yr = startTick; yr <= maxYear; yr += step) {
+          const x = xScale(yr);
+          const t = document.createElementNS(ns, 'text');
+          t.setAttribute('x', x); t.setAttribute('y', height - margin.bottom + 18);
+          t.setAttribute('text-anchor', 'middle'); t.setAttribute('fill', '#94a3b8');
+          t.setAttribute('font-size', '10'); t.textContent = yr;
+          xG.appendChild(t);
+        }
+        svg.appendChild(xG);
+
+        // Area
+        let areaD = `M ${xScale(data[0].year)} ${yScale(data[0][valueKey])}`;
+        for (let i = 1; i < data.length; i++) areaD += ` L ${xScale(data[i].year)} ${yScale(data[i][valueKey])}`;
+        areaD += ` L ${xScale(data[data.length - 1].year)} ${yScale(yMin)} L ${xScale(data[0].year)} ${yScale(yMin)} Z`;
+        const area = document.createElementNS(ns, 'path');
+        area.setAttribute('d', areaD); area.setAttribute('fill', `url(#${gradId})`);
+        svg.appendChild(area);
+
+        // Line
+        let lineD = `M ${xScale(data[0].year)} ${yScale(data[0][valueKey])}`;
+        for (let i = 1; i < data.length; i++) lineD += ` L ${xScale(data[i].year)} ${yScale(data[i][valueKey])}`;
+        const linePath = document.createElementNS(ns, 'path');
+        linePath.setAttribute('d', lineD); linePath.setAttribute('fill', 'none');
+        linePath.setAttribute('stroke', color); linePath.setAttribute('stroke-width', '2.5');
+        linePath.setAttribute('stroke-linejoin', 'round');
+        svg.appendChild(linePath);
+
+        // Milestones
+        data.filter(d => d.milestone).forEach(d => {
+          const c = document.createElementNS(ns, 'circle');
+          c.setAttribute('cx', xScale(d.year)); c.setAttribute('cy', yScale(d[valueKey]));
+          c.setAttribute('r', '3.5'); c.setAttribute('fill', color);
+          c.setAttribute('stroke', '#fff'); c.setAttribute('stroke-width', '2');
+          svg.appendChild(c);
+        });
+
+        // Hover elements
+        const hoverG = document.createElementNS(ns, 'g');
+        const hLine = document.createElementNS(ns, 'line');
+        hLine.setAttribute('y1', margin.top); hLine.setAttribute('y2', height - margin.bottom);
+        hLine.setAttribute('stroke', color); hLine.setAttribute('stroke-width', '1');
+        hLine.setAttribute('stroke-dasharray', '4,4'); hLine.setAttribute('opacity', '0');
+        hoverG.appendChild(hLine);
+        const hDot = document.createElementNS(ns, 'circle');
+        hDot.setAttribute('r', '5'); hDot.setAttribute('fill', color);
+        hDot.setAttribute('stroke', '#fff'); hDot.setAttribute('stroke-width', '2');
+        hDot.setAttribute('opacity', '0');
+        hoverG.appendChild(hDot);
+        svg.appendChild(hoverG);
+
+        const hRect = document.createElementNS(ns, 'rect');
+        hRect.setAttribute('x', margin.left); hRect.setAttribute('y', margin.top);
+        hRect.setAttribute('width', innerW); hRect.setAttribute('height', innerH);
+        hRect.setAttribute('fill', 'transparent'); hRect.style.cursor = 'crosshair';
+        svg.appendChild(hRect);
+
+        function findClosest(mouseX) {
+          const svgRect = svg.getBoundingClientRect();
+          const scaleX = width / svgRect.width;
+          const adjX = mouseX * scaleX;
+          let closest = data[0], minDist = Infinity;
+          data.forEach(d => { const dist = Math.abs(xScale(d.year) - adjX); if (dist < minDist) { minDist = dist; closest = d; } });
+          return closest;
+        }
+
+        function showTooltip(clientX, clientY) {
+          const svgRect = svg.getBoundingClientRect();
+          const d = findClosest(clientX - svgRect.left);
+          const cx = xScale(d.year), cy = yScale(d[valueKey]);
+          hLine.setAttribute('x1', cx); hLine.setAttribute('x2', cx); hLine.setAttribute('opacity', '0.5');
+          hDot.setAttribute('cx', cx); hDot.setAttribute('cy', cy); hDot.setAttribute('opacity', '1');
+          let html = `<strong>${d.year}</strong><br>${cfg.tooltipLabel}${cfg.tooltipFormat ? cfg.tooltipFormat(d[valueKey]) : d[valueKey].toLocaleString()}`;
+          if (d.milestone) html += `<br>📌 ${d.milestone}`;
+          tooltip.innerHTML = html; tooltip.style.display = 'block';
+          const cRect = container.getBoundingClientRect();
+          let tx = clientX - cRect.left + 12, ty = clientY - cRect.top - 10;
+          if (tx + 160 > cRect.width) tx -= 170;
+          if (ty < 10) ty = 10;
+          tooltip.style.left = tx + 'px'; tooltip.style.top = ty + 'px';
+        }
+
+        function hideTooltip() {
+          hLine.setAttribute('opacity', '0'); hDot.setAttribute('opacity', '0');
+          tooltip.style.display = 'none';
+        }
+
+        hRect.addEventListener('mousemove', e => showTooltip(e.clientX, e.clientY));
+        hRect.addEventListener('mouseleave', hideTooltip);
+        hRect.addEventListener('touchmove', e => { e.preventDefault(); showTooltip(e.touches[0].clientX, e.touches[0].clientY); });
+        hRect.addEventListener('touchend', hideTooltip);
+      }
+
+      // Chart configurations
+      const charts = [
+        {
+          id: 'taiex', data: taiexData, color: '#c2410c', valueKey: 'close',
+          tooltipLabel: '加權指數：', tooltipFormat: v => v.toLocaleString(),
+          yFormat: v => v >= 1000 ? Math.round(v / 1000) + 'K' : Math.round(v).toString()
+        },
+        {
+          id: 'cpi', data: cpiData, color: '#16a34a', valueKey: 'value',
+          tooltipLabel: 'CPI：', tooltipFormat: v => v.toFixed(1),
+          yFormat: v => v.toFixed(0)
+        },
+        {
+          id: 'salary', data: salaryData, color: '#2563eb', valueKey: 'value',
+          tooltipLabel: '經常性薪資：NT$', tooltipFormat: v => Math.round(v).toLocaleString(),
+          yFormat: v => v >= 1000 ? Math.round(v / 1000) + 'K' : Math.round(v).toString()
+        },
+        {
+          id: 'housing', data: housingData, color: '#dc2626', valueKey: 'value',
+          tooltipLabel: '房價指數：', tooltipFormat: v => v.toFixed(1),
+          yFormat: v => v.toFixed(0)
+        }
+      ];
+
+      charts.forEach(cfg => {
+        const container = document.getElementById(cfg.id + '-chart');
+        if (!container) return;
+        const svg = container.querySelector('.econ-svg');
+        const tooltip = container.querySelector('.econ-tooltip');
+        if (svg && tooltip) {
+          createChart({ ...cfg, svg, tooltip });
+        }
+      });
+    });
+  </script>
+)}
