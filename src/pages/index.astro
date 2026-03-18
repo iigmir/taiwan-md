@@ -2,19 +2,18 @@
 import Layout from '../layouts/Layout.astro';
 import CategoryGrid from '../components/CategoryGrid.astro';
 import { getCollection } from 'astro:content';
-import { execSync } from 'child_process';
-
-// Fetch recent git commits for update history section
+// Fetch recent commits from GitHub API (works in shallow clone CI/CD environments)
 let recentCommits: { hash: string; date: string; message: string }[] = [];
 try {
-  const log = execSync(
-    'git log --pretty=format:"%H||%ai||%s" -5',
-    { cwd: process.cwd(), encoding: 'utf-8' }
-  );
-  recentCommits = log.trim().split('\n').filter(Boolean).map(line => {
-    const [hash, date, message] = line.split('||');
-    return { hash, date, message };
-  });
+  const res = await fetch('https://api.github.com/repos/frank890417/taiwan-md/commits?per_page=5');
+  if (res.ok) {
+    const data = await res.json();
+    recentCommits = data.map((c: any) => ({
+      hash: c.sha,
+      date: c.commit.author.date,
+      message: c.commit.message.split('\n')[0],
+    }));
+  }
 } catch (e) {
   // silently fail
 }

@@ -1,24 +1,21 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { execSync } from 'child_process';
 
-// Fetch git log at build time
+// Fetch commit history from GitHub API (works in shallow clone CI/CD environments)
 let commits: { hash: string; date: string; message: string; author: string }[] = [];
 try {
-  const log = execSync(
-    'git log --pretty=format:"%H||%ai||%s||%an" -100',
-    { cwd: process.cwd(), encoding: 'utf-8' }
-  );
-  commits = log
-    .trim()
-    .split('\n')
-    .filter(Boolean)
-    .map(line => {
-      const [hash, date, message, author] = line.split('||');
-      return { hash, date, message, author };
-    });
+  const res = await fetch('https://api.github.com/repos/frank890417/taiwan-md/commits?per_page=100');
+  if (res.ok) {
+    const data = await res.json();
+    commits = data.map((c: any) => ({
+      hash: c.sha,
+      date: c.commit.author.date,
+      message: c.commit.message.split('\n')[0],
+      author: c.commit.author.name,
+    }));
+  }
 } catch (e) {
-  console.warn('Failed to read git log:', e);
+  console.warn('Failed to fetch commits from GitHub API:', e);
 }
 
 // Group commits by date
