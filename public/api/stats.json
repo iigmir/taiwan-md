@@ -1,8 +1,8 @@
 {
-  "totalArticles": 690,
-  "totalCategories": 15,
-  "estimatedContributors": 46,
-  "totalTags": 1619,
+  "totalArticles": 703,
+  "totalCategories": 20,
+  "estimatedContributors": 47,
+  "totalTags": 1643,
   "categories": [
     {
       "name": "en",
@@ -19,6 +19,10 @@
     {
       "name": "Society",
       "count": 19
+    },
+    {
+      "name": "Economy",
+      "count": 24
     },
     {
       "name": "People",
@@ -41,10 +45,6 @@
       "count": 21
     },
     {
-      "name": "Economy",
-      "count": 16
-    },
-    {
       "name": "Geography",
       "count": 16
     },
@@ -53,12 +53,32 @@
       "count": 16
     },
     {
+      "name": "台灣水果王國.md",
+      "count": 1
+    },
+    {
       "name": "Music",
       "count": 19
     },
     {
       "name": "About",
       "count": 5
+    },
+    {
+      "name": "台灣海岸地形與海洋地景.md",
+      "count": 1
+    },
+    {
+      "name": "台灣茶道與生活美學.md",
+      "count": 1
+    },
+    {
+      "name": "台灣醫療與全民健保.md",
+      "count": 1
+    },
+    {
+      "name": "民主化.md",
+      "count": 1
     },
     {
       "name": "resources",
@@ -107,16 +127,20 @@
       "count": 11
     },
     {
+      "name": "歷史",
+      "count": 10
+    },
+    {
+      "name": "Economy",
+      "count": 10
+    },
+    {
       "name": "奧運",
       "count": 10
     },
     {
       "name": "教育",
       "count": 10
-    },
-    {
-      "name": "歷史",
-      "count": 9
     },
     {
       "name": "History",
@@ -135,21 +159,17 @@
       "count": 9
     },
     {
-      "name": "文化",
+      "name": "民主化",
       "count": 8
     },
     {
-      "name": "流行音樂",
-      "count": 8
-    },
-    {
-      "name": "Taiwan",
+      "name": "企業",
       "count": 8
     }
   ],
   "languageDistribution": {
-    "zh-TW": 690,
+    "zh-TW": 703,
     "en": 0
   },
-  "lastUpdated": "2026-03-20T14:41:52.072Z"
+  "lastUpdated": "2026-03-20T16:05:47.731Z"
 }
