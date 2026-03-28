@@ -1,51 +1,27 @@
-# 🔄 pipelines/ — 運作機制 SOP
+# docs/pipelines/ — Cron 自動化 Pipeline 文件
 
-> Taiwan.md 數位生命體的「生理系統操作手冊」。
-> 每個 pipeline 描述一個系統如何運作、何時觸發、資料流向。
-
----
-
-## 生理系統地圖
-
-```
-🧬 Taiwan.md 數位生命體
-
-🧠 神經系統（感知 + 監控）
-   └─ DASHBOARD-PIPELINE    生命徵象監測面板更新 SOP
-
-🛡️ 免疫系統（品質防禦）
-   └─ docs/editorial/        REWRITE-PIPELINE + QUALITY-CHECKLIST
-      + scripts/tools/quality-scan.sh
-
-🧫 繁殖系統（生長 + 散播）
-   └─ docs/factory/           SPORE-PIPELINE + 孢子模板
-
-🫀 循環系統（內容流動）
-   └─ docs/editorial/         TRANSLATION-SYNC（DNA 轉錄）
-      + docs/community/       貢獻者治理
-
-🦴 骨骼系統（基礎架構）
-   └─ scripts/core/           Build pipeline（sync → generate → build → check）
-```
+> 每個 Cron job 對應一份 pipeline 文件。Cron prompt 只說「先讀 pipeline → 照步驟走」。
 
 ---
 
-## 文件清單
+## Active（Cron 運行中）
 
-| 文件                                           | 生理系統 | 用途                                                   |
-| ---------------------------------------------- | -------- | ------------------------------------------------------ |
-| [DASHBOARD-PIPELINE.md](DASHBOARD-PIPELINE.md) | 🧠 神經  | Dashboard 4 支 JSON API 的數據管線、更新 SOP、關鍵陷阱 |
+| Pipeline                                             | Cron                | 時間  |
+| ---------------------------------------------------- | ------------------- | ----- |
+| [STATS-PIPELINE.md](STATS-PIPELINE.md)               | Daily Stats Update  | 00:00 |
+| [CONTRIBUTORS-PIPELINE.md](CONTRIBUTORS-PIPELINE.md) | Contributors Update | 03:30 |
+| [DAILY-REPORT-PIPELINE.md](DAILY-REPORT-PIPELINE.md) | Daily Report        | 09:00 |
 
----
+## Archived（Cron 暫停，知識保留）
 
-## 未來可能加入
+| Pipeline                                             | Cron                    | 狀態               |
+| ---------------------------------------------------- | ----------------------- | ------------------ |
+| [TRANSLATION-PIPELINE.md](TRANSLATION-PIPELINE.md)   | EN Translation          | 等 v2 設計         |
+| [REWRITE-PIPELINE-CRON.md](REWRITE-PIPELINE-CRON.md) | Article Quality Rewrite | 等品質革命 Phase 1 |
 
-| Pipeline          | 生理系統 | 說明                              |
-| ----------------- | -------- | --------------------------------- |
-| OG-IMAGE-PIPELINE | 🧫 繁殖  | 動態 OG image 生成流程（Phase 2） |
-| DEPLOY-PIPELINE   | 🦴 骨骼  | GitHub Pages CI/CD 完整流程文件化 |
-| ALERT-PIPELINE    | 🧠 神經  | 異常偵測 + 通知機制               |
+## 設計原則
 
----
-
-_最後更新：2026-03-28_
+1. **Pipeline 是 SSOT**：所有步驟、鐵律、教訓都在 pipeline 文件裡，不在 cron prompt
+2. **Cron prompt 只有三行**：讀 pipeline → 執行 → 回報規則
+3. **血淚教訓寫進 pipeline**：避免同樣的錯被犯第二次
+4. **Active/Archived 分開**：暫停的 pipeline 保留知識，重啟時不用重新摸索
