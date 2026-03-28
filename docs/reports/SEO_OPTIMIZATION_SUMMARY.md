@@ -117,7 +117,7 @@ Sitemap: https://taiwan.md/sitemap-index.xml
 ### 📊 監控與追蹤
 
 1. **Google Analytics 4**
-   - 確認 GA4 (G-JGC5W00N7T) 正常運作
+   - 確認 GA4 正常運作
    - 設定 organic search 流量追蹤
    - 建立 SEO performance dashboard
 
