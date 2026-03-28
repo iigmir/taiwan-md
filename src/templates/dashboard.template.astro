@@ -84,12 +84,6 @@ const isEn = lang === 'en';
           <div class="vital-label">{t('dashboard.vitals.revision')}</div>
           <div class="vital-desc">{t('dashboard.vitals.revision.desc')}</div>
         </div>
-        <div class="vital-card" data-vital="featured">
-          <div class="vital-emoji">⭐</div>
-          <div class="vital-value" id="vital-featured">—</div>
-          <div class="vital-label">{t('dashboard.vitals.featured')}</div>
-          <div class="vital-desc">{t('dashboard.vitals.featured.desc')}</div>
-        </div>
       </div>
     </section>
 
@@ -448,11 +442,6 @@ const isEn = lang === 'en';
         value: parseFloat(v.avgRevision),
         suffix: '',
         prefix: '×',
-      },
-      {
-        id: 'vital-featured',
-        value: parseFloat(v.featuredPercent),
-        suffix: '%',
       },
     ];
 
@@ -1853,9 +1842,6 @@ const isEn = lang === 'en';
   }
   .vital-card[data-vital='revision'] {
     border-left-color: #f59e0b;
-  }
-  .vital-card[data-vital='featured'] {
-    border-left-color: #ec4899;
   }
   .vital-card:hover {
     transform: scale(1.02);
