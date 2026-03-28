@@ -23,15 +23,18 @@ Taiwan.md is an open-source, curated, AI-friendly knowledge base that helps the 
 
 ## ✨ Features
 
-- 📖 **930+ curated articles** across 13 categories (403 zh-TW + 489 en + 34 es + 7 ja)
+- 📖 **940+ curated articles** across 13 categories (413 zh-TW + 479 en + 34 es + 12 ja)
 - 🌐 **Multilingual** — 繁體中文 (SSOT) + English + Español + 日本語
 - 🤖 **AI-native** — [`llms.txt`](https://taiwan.md/llms.txt), [`robots.txt`](https://taiwan.md/robots.txt), structured Markdown SSOT
 - 🕸️ **Interactive knowledge graph** — D3.js force simulation with zoom, drag, cross-category bridges
 - 🌳 **Resource mindmap** — D3.js bidirectional tidy tree with 146+ official Taiwan websites
+- 📊 **[Live dashboard](https://taiwan.md/dashboard)** — real-time organism health monitor (GA4, quality scores, growth charts)
+- 🖥️ **[CLI tool](https://taiwan.md/contribute#cli)** — `npx taiwanmd` for terminal-native reading, quiz, search, RAG
 - 🎭 **Curated, not encyclopedic** — every page answers "why this matters"
 - 📐 **Three-layer depth** — 30-sec overview → 5-min read → full article
 - 🎨 **Literary curatorial style** — Noto Serif TC, essay-driven, inspired by 報導者
-- 🔍 **SEO optimized** — JSON-LD structured data, Open Graph, Twitter Cards, RSS feeds
+- 🛡️ **14-dimension quality scanner** — automated detection of hollow AI content, list-dumping, quality decay
+- 🔍 **SEO optimized** — JSON-LD structured data, Open Graph, per-article OG cards, RSS feeds
 - 💾 **Wikimedia Commons** — CC-licensed images with local caching
 - 📝 **Zero-code contribution** — forms, AI prompts, or email
 - 🔓 **CC BY-SA 4.0** — free to cite, remix, share
@@ -43,17 +46,17 @@ Taiwan.md is an open-source, curated, AI-friendly knowledge base that helps the 
 
 | Metric                   | Count |
 | ------------------------ | ----- |
-| 📄 Total articles        | 970+  |
-| 🇹🇼 Chinese (zh-TW)       | 453   |
-| 🇺🇸 English (en)          | 518   |
+| 📄 Total articles        | 940+  |
+| 🇹🇼 Chinese (zh-TW)       | 413   |
+| 🇺🇸 English (en)          | 479   |
 | 🇪🇸 Español (es)          | 34    |
-| 🇯🇵 日本語 (ja)           | 7     |
+| 🇯🇵 日本語 (ja)           | 12    |
 | 📂 Categories            | 13    |
 | 🕸️ Knowledge graph nodes | 220+  |
 | 🔗 Resource websites     | 146+  |
-| 👥 Contributors          | 40+   |
-| ⭐ GitHub Stars          | 888   |
-| 🍴 Forks                 | 120   |
+| 👥 Contributors          | 48    |
+| ⭐ GitHub Stars          | 895   |
+| 🍴 Forks                 | 122   |
 
 ---
 
@@ -155,30 +158,26 @@ We maintain an **[EDITORIAL.md](./EDITORIAL.md)** — our writing methodology an
 ## 🏗️ Architecture
 
 ```
-knowledge/           ← SSOT (Single Source of Truth)
-├── History/         ← 中文文章 + _Hub.md (literary curatorial essays)
-├── en/History/      ← English translations
-├── About/           ← Meta content (origin story, quotes, resources)
-├── ...
-scripts/sync.sh      ← One-command sync to src/content/
-src/
-├── pages/           ← Astro v5 pages with full SEO
-├── layouts/         ← Glassmorphism nav, Noto Serif TC typography
-└── content/         ← Build-time projection from knowledge/
-public/
-├── images/wiki/     ← Cached Wikimedia Commons images (MD5 hashed)
-└── ...
-docs/
-├── docs/pipelines/              ← 運作機制 SOP
-├── research-e-estonia-analysis.md  ← International benchmark study
-└── ...
+taiwan-md/
+├── knowledge/       ← 📖 SSOT — 13 分類中文文章 + en/es/ja 翻譯
+├── src/             ← 🌐 Astro v5 網站（pages, layouts, components, i18n）
+├── scripts/         ← ⚙️ 腳本（core/tools/utils）→ 詳見 scripts/README.md
+├── docs/            ← 📚 專案文件（8 子目錄）→ 詳見 docs/README.md
+├── cli/             ← 🖥️ taiwanmd CLI 工具（npm package）
+├── public/          ← 📁 靜態資源（images, api JSON, llms.txt）
+├── .github/         ← 🔧 CI/CD workflows + issue/PR templates
+├── .claude/         ← 🤖 Claude Code skills（AI agent 開發用）
+├── EDITORIAL.md     ← 🫀 寫作品質標準 v4
+├── CONTRIBUTING.md  ← 🚪 貢獻指南
+├── ROADMAP.md       ← 🗺️ 發展路線圖
+└── CODE_OF_CONDUCT / SECURITY  ← 社群規範
 ```
 
 **Tech:** Astro v5 · GitHub Pages · marked.js · D3.js · Google Fonts (Noto Serif TC)  
-**SSOT:** All content lives in `knowledge/`. Website is a projection.  
-**SEO:** JSON-LD · Open Graph · Twitter Cards · RSS · Canonical URLs · `<meta ai-summary>`  
-**i18n:** zh-TW (default SSOT) + en (100% coverage)  
-**Quality:** All articles require source citations **with clickable URLs** — no plain-text references. AI-assisted content undergoes fact-checking before merge. See [EDITORIAL.md](./EDITORIAL.md) and [CONTRIBUTING.md](./CONTRIBUTING.md).
+**SSOT:** All content lives in `knowledge/`. Website is a projection. `scripts/core/sync.sh` syncs to `src/content/`.  
+**SEO:** JSON-LD · Open Graph · per-article OG cards (`/og/[category]/[slug]`) · Twitter Cards · RSS · `<meta ai-summary>`  
+**i18n:** zh-TW (default SSOT) + en (116% coverage) + es + ja  
+**Quality:** 14-dimension automated scanner + editorial pipeline. See [EDITORIAL.md](./EDITORIAL.md) and [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ---
 
@@ -216,13 +215,13 @@ Every `.md` file in the root directory is an organ of this organism. Together, t
 
 The organism has an automated immune system that detects and fights "hollow AI content" — articles that look polished but carry no real substance:
 
-| Tool                                                        | Function                                                                                                                                                                 |
-| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `tools/quality-scan.sh`                                     | Scans all articles for 7 hollow-content indicators: bullet padding, missing dates, no sources, empty modifiers, repetitive structure, thin paragraphs, no human review   |
-| `tools/quality-scan.sh --diff`                              | Compares against baseline to show which articles improved or degraded since last scan                                                                                    |
-| `tools/quality-scan.sh --fix`                               | Auto-suggests fixes for flagged articles                                                                                                                                 |
-| [EDITORIAL.md §塑膠偵測](./EDITORIAL.md)                    | Human-readable guide to detecting "plastic" writing — five species of hollow sentences that AI loves to generate                                                         |
-| [REWRITE-PIPELINE.md](./docs/editorial/REWRITE-PIPELINE.md) | Four-file orchestration pipeline that prevents quality collapse: Pipeline (flow) → RESEARCH-TEMPLATE (research) → EDITORIAL (writing) → QUALITY-CHECKLIST (verification) |
+| Tool                                                        | Function                                                                                                                                                                                                                                                                                                  |
+| ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tools/quality-scan.sh`                                     | Scans all articles for **14 quality dimensions**: bullet padding, missing dates, no sources, empty modifiers, repetitive structure, thin paragraphs, no human review, plastic phrases, dash abuse, textbook openings, cliché endings, template H2s, **list-dump detection**, **quality decay** (虎頭蛇尾) |
+| `tools/quality-scan.sh --diff`                              | Compares against baseline to show which articles improved or degraded since last scan                                                                                                                                                                                                                     |
+| `tools/quality-scan.sh --sort`                              | Outputs worst-scoring articles first for triage                                                                                                                                                                                                                                                           |
+| [EDITORIAL.md §塑膠偵測](./EDITORIAL.md)                    | Human-readable guide to detecting "plastic" writing — five species of hollow sentences that AI loves to generate                                                                                                                                                                                          |
+| [REWRITE-PIPELINE.md](./docs/editorial/REWRITE-PIPELINE.md) | Four-file orchestration pipeline that prevents quality collapse: Pipeline (flow) → RESEARCH-TEMPLATE (research) → EDITORIAL (writing) → QUALITY-CHECKLIST (verification)                                                                                                                                  |
 
 ### 🌱 How the Organism Evolves
 
@@ -238,7 +237,7 @@ New knowledge discovered
        │     → 五種開場、因果鏈、塑膠偵測、結尾模式庫
        │
        └─ Stage 3: docs/editorial/QUALITY-CHECKLIST.md (verification)
-             → 五指檢測 → 結構驗證 → 塑膠掃描 → quality-scan.sh
+             → 五指檢測 → 結構驗證 → 塑膠掃描 → quality-scan.sh (14 維度)
                     ↓
               docs/community/REVIEWERS.md (human review)
                     ↓
@@ -315,15 +314,17 @@ When someone says "your content is biased," the answer isn't to swing to the opp
 
 ## 🗺️ Roadmap
 
-- [x] 🚀 Launch with 12 categories + bilingual content
-- [x] 🕸️ Interactive knowledge graph (D3.js)
+- [x] 🚀 Launch with 13 categories + bilingual content
+- [x] 🕸️ Interactive knowledge graph (D3.js, subcategory clustering)
 - [x] 🌳 Resource mindmap (146+ websites, bidirectional tidy tree)
-- [x] 🔍 Full SEO (JSON-LD, OG, RSS, sitemap)
-- [x] 🌐 100% i18n coverage (zh-TW + en)
-- [x] 📊 GA4 analytics integration
+- [x] 🔍 Full SEO (JSON-LD, OG, per-article OG cards, RSS, sitemap)
+- [x] 🌐 100% i18n coverage (zh-TW + en) + es + ja
+- [x] 📊 GA4 analytics + [live dashboard](https://taiwan.md/dashboard)
+- [x] 🖥️ CLI tool (`npx taiwanmd` — read, search, quiz, RAG, validate)
+- [x] 🛡️ 14-dimension quality scanner (v3.0)
+- [x] 🏭 Spore factory — social card generation pipeline
 - [ ] 🗺️ Interactive Taiwan map (TopoJSON, multi-layer)
 - [ ] 📅 Taiwan 400-year history timeline
-- [ ] 🏭 Semiconductor supply chain Sankey diagram
 - [ ] 🎯 Show HN launch
 - [ ] 📰 Newsletter subscription
 - [ ] 🤝 g0v collaboration
