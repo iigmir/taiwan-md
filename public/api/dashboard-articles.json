@@ -1,5 +1,27 @@
 [
   {
+    "title": "台灣新媒體藝術",
+    "slug": "台灣新媒體藝術",
+    "category": "art",
+    "subcategory": "新媒體與數位藝術",
+    "date": "2026-03-28",
+    "lastVerified": "2026-03-28",
+    "lastHumanReview": false,
+    "featured": true,
+    "wordCount": 6038,
+    "tagCount": 0,
+    "tags": [],
+    "translations": {
+      "en": false,
+      "es": false,
+      "ja": false
+    },
+    "revision": 9,
+    "commitHash": "6dd5d987",
+    "description": "從1980年代錄像先驅到威尼斯VR大獎，16位關鍵藝術家與40年數位藝術革命的完整脈絡。台灣如何用程式碼寫詩，在國際藝術版圖刻下自己的名字。",
+    "healthScore": 65
+  },
+  {
     "title": "台灣小吃",
     "slug": "台灣小吃",
     "category": "food",
@@ -406,10 +428,10 @@
       "es": false,
       "ja": false
     },
-    "revision": 2,
-    "commitHash": "42643155",
+    "revision": 3,
+    "commitHash": "8b9bd4b6",
     "description": "1999年生的歌星、韓國K-POP樂團TWICE的忙內",
-    "healthScore": 53
+    "healthScore": 56
   },
   {
     "title": "莫那·魯道",
@@ -778,7 +800,7 @@
     "lastVerified": null,
     "lastHumanReview": false,
     "featured": false,
-    "wordCount": 1412,
+    "wordCount": 1410,
     "tagCount": 5,
     "tags": ["台灣流行音樂", "偶像團體", "小虎隊", "80年代音樂", "青春文化"],
     "translations": {
@@ -786,10 +808,10 @@
       "es": false,
       "ja": false
     },
-    "revision": 2,
-    "commitHash": "42643155",
+    "revision": 3,
+    "commitHash": "8b9bd4b6",
     "description": "1988年從華視選秀節目中誕生的小虎隊，由吳奇隆、陳志朋、蘇有朋組成，憑藉陽光活力形象與勵志舞曲，成為台灣第一個男子偶像團體，開啟華語流行音樂的青春偶像時代，並成為兩岸三地共同的青春記憶。",
-    "healthScore": 33
+    "healthScore": 36
   },
   {
     "title": "捐款永動機：FAB DAO 與百岳計畫的社會實驗",
@@ -915,28 +937,6 @@
     "revision": 9,
     "commitHash": "42643155",
     "description": "從被質疑「台灣有文學嗎？」到楊逵首次在日本獲獎，從語言禁錮到多重聲音復甦——一部關於聲音尋找文字、文字尋找家園的四百年史詩",
-    "healthScore": 65
-  },
-  {
-    "title": "台灣新媒體藝術",
-    "slug": "台灣新媒體藝術",
-    "category": "art",
-    "subcategory": "新媒體與數位藝術",
-    "date": "2026-03-24",
-    "lastVerified": "2026-03-24",
-    "lastHumanReview": false,
-    "featured": true,
-    "wordCount": 3912,
-    "tagCount": 0,
-    "tags": [],
-    "translations": {
-      "en": false,
-      "es": false,
-      "ja": false
-    },
-    "revision": 8,
-    "commitHash": "42643155",
-    "description": "當黃心健的VR作品在威尼斯拿下最佳體驗獎時，很少人知道：推動這場革命的不是科技業，而是一群用程式碼寫詩的藝術家。台灣新媒體藝術20年來的發展軌跡，揭示了科技與人文結合的另一種可能性。",
     "healthScore": 65
   },
   {
@@ -7670,28 +7670,6 @@
     "healthScore": 65
   },
   {
-    "title": "台灣實驗與新媒體藝術",
-    "slug": "台灣實驗與新媒體藝術",
-    "category": "art",
-    "subcategory": "新媒體與數位藝術",
-    "date": "2026-03-18",
-    "lastVerified": "2026-03-19",
-    "lastHumanReview": false,
-    "featured": true,
-    "wordCount": 4010,
-    "tagCount": 0,
-    "tags": [],
-    "translations": {
-      "en": false,
-      "es": false,
-      "ja": false
-    },
-    "revision": 7,
-    "commitHash": "42643155",
-    "description": "從錄像藝術到VR互動，探索台灣新媒體藝術的創新發展與科技藝術生態",
-    "healthScore": 65
-  },
-  {
     "title": "台灣當代文學發展",
     "slug": "台灣當代文學發展",
     "category": "art",
@@ -7884,8 +7862,8 @@
       "es": false,
       "ja": false
     },
-    "revision": 10,
-    "commitHash": "42643155",
+    "revision": 11,
+    "commitHash": "8b9bd4b6",
     "description": "從 K-pop MV 到首爾書展，「대만감성」如何讓台灣的日常街景成為亞洲最迷人的美學符號",
     "healthScore": 65
   },
@@ -8908,8 +8886,8 @@
       "es": false,
       "ja": false
     },
-    "revision": 6,
-    "commitHash": "42643155",
+    "revision": 7,
+    "commitHash": "8b9bd4b6",
     "description": "真的假的我以為阿姨只會叫人家帥哥而已——寫早餐店阿姨如何成為整個社區的情報中心",
     "healthScore": 59
   },
@@ -9161,28 +9139,6 @@
     "commitHash": "3c599304",
     "description": "從街頭散步的靈感，到為世界策展台灣的完整入口",
     "healthScore": 48
-  },
-  {
-    "title": "新媒體藝術",
-    "slug": "新媒體藝術",
-    "category": "art",
-    "subcategory": "新媒體與數位藝術",
-    "date": "2026-03-17",
-    "lastVerified": "2026-03-19",
-    "lastHumanReview": false,
-    "featured": false,
-    "wordCount": 3123,
-    "tagCount": 5,
-    "tags": ["藝術", "新媒體", "數位藝術", "科技藝術", "互動藝術"],
-    "translations": {
-      "en": true,
-      "es": false,
-      "ja": false
-    },
-    "revision": 6,
-    "commitHash": "42643155",
-    "description": "台灣數位藝術的先鋒探索，從實驗室到國際舞台的科技與人文融合",
-    "healthScore": 65
   },
   {
     "title": "台灣當代藝術",

@@ -1,8 +1,8 @@
 {
-  "totalArticles": 948,
-  "totalCategories": 17,
+  "totalArticles": 947,
+  "totalCategories": 18,
   "estimatedContributors": 64,
-  "totalTags": 2445,
+  "totalTags": 2442,
   "categories": [
     {
       "name": "en",
@@ -38,7 +38,7 @@
     },
     {
       "name": "Art",
-      "count": 26
+      "count": 24
     },
     {
       "name": "Food",
@@ -63,6 +63,10 @@
     {
       "name": "About",
       "count": 6
+    },
+    {
+      "name": "Language",
+      "count": 1
     },
     {
       "name": "es",
@@ -156,8 +160,8 @@
     }
   ],
   "languageDistribution": {
-    "zh-TW": 948,
+    "zh-TW": 947,
     "en": 0
   },
-  "lastUpdated": "2026-03-28T08:22:39.519Z"
+  "lastUpdated": "2026-03-28T14:21:00.286Z"
 }

@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProticoScript from '../components/ProticoScript.astro';
-import i18nProgress from '../data/i18n-progress.json';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -610,85 +609,120 @@ const t = useTranslations(lang);
     </div>
   </section>
 
-  <!-- i18n Progress Section - Position 9 -->
-  <section class="i18n-progress-section">
-    <div class="i18n-inner">
-      <h2>{t('contribute.i18n.title')}</h2>
-      <p class="i18n-desc">
+  <!-- CLI Section - Position 9 -->
+  <section class="cli-section" id="cli">
+    <div class="cli-inner">
+      <h2>
         {
-          t('contribute.i18n.desc').replace(
-            '{coverage}',
-            i18nProgress.coverage_en.toString(),
-          )
+          lang === 'en'
+            ? '🖥️ CLI — Explore from Your Terminal'
+            : '🖥️ CLI — 從終端機探索台灣'
+        }
+      </h2>
+      <p class="cli-desc">
+        {
+          lang === 'en'
+            ? 'Search, read, and explore 900+ Taiwan articles without leaving your terminal. Perfect for developers, AI workflows, and knowledge explorers.'
+            : '不離開終端機，搜尋、閱讀、探索 900+ 篇台灣知識文章。為開發者、AI 工作流、知識探索者設計。'
         }
       </p>
 
-      <div class="progress-overview">
-        <div class="progress-main">
-          <h3>{t('contribute.i18n.english')}</h3>
-          <div class="progress-bar">
-            <div
-              class="progress-fill english"
-              style={`width: ${i18nProgress.coverage_en}%`}
-            >
-              {i18nProgress.coverage_en}%
-            </div>
+      <div class="cli-install">
+        <code>npx taiwanmd@latest search 珍珠奶茶</code>
+      </div>
+
+      <div class="cli-grid">
+        <div class="cli-card">
+          <div class="cli-card-icon">🔍</div>
+          <h3>{lang === 'en' ? 'Search & Read' : '搜尋 & 閱讀'}</h3>
+          <div class="cli-commands">
+            <code>taiwanmd search 珍珠奶茶</code>
+            <code>taiwanmd read 珍珠奶茶 --en</code>
+            <code>taiwanmd explore</code>
           </div>
-          <p class="progress-detail">
-            {i18nProgress.total_en} / {i18nProgress.total_zh}
-            {t('contribute.i18n.articles')}
+          <p>
+            {
+              lang === 'en'
+                ? 'Fuzzy search in Chinese & English. Interactive TUI. Read articles in 4 languages.'
+                : '中英文模糊搜尋、互動式 TUI、四語閱讀。'
+            }
           </p>
         </div>
 
-        <div class="progress-other">
-          <div class="progress-item">
-            <span>{t('contribute.i18n.japanese')}</span>
-            <div class="progress-bar empty">
-              <div class="progress-fill" style="width: 0%">0%</div>
-            </div>
+        <div class="cli-card">
+          <div class="cli-card-icon">🎮</div>
+          <h3>{lang === 'en' ? 'Discover & Play' : '探索 & 玩'}</h3>
+          <div class="cli-commands">
+            <code>taiwanmd today</code>
+            <code>taiwanmd quiz</code>
+            <code>taiwanmd random</code>
           </div>
-          <div class="progress-item">
-            <span>{t('contribute.i18n.korean')}</span>
-            <div class="progress-bar empty">
-              <div class="progress-fill" style="width: 0%">0%</div>
-            </div>
+          <p>
+            {
+              lang === 'en'
+                ? 'Daily picks, 5-question quiz, random discovery. Learn Taiwan every day.'
+                : '每日精選、5 題問答、隨機探索。每天認識台灣一點。'
+            }
+          </p>
+        </div>
+
+        <div class="cli-card">
+          <div class="cli-card-icon">🤖</div>
+          <h3>{lang === 'en' ? 'AI-Native' : 'AI 原生'}</h3>
+          <div class="cli-commands">
+            <code>taiwanmd rag "半導體" | llm</code>
+            <code>taiwanmd read 珍珠奶茶 --raw</code>
+            <code>taiwanmd search 經濟 --json</code>
           </div>
-          <div class="progress-item">
-            <span>{t('contribute.i18n.spanish')}</span>
-            <div class="progress-bar empty">
-              <div class="progress-fill" style="width: 0%">0%</div>
-            </div>
+          <p>
+            {
+              lang === 'en'
+                ? 'RAG-ready context for LLMs. Raw/JSON output for piping into any AI workflow.'
+                : 'RAG context 直接 pipe 給 LLM。--raw / --json 接入任何 AI 工作流。'
+            }
+          </p>
+        </div>
+
+        <div class="cli-card">
+          <div class="cli-card-icon">✏️</div>
+          <h3>{lang === 'en' ? 'Contribute' : '參與貢獻'}</h3>
+          <div class="cli-commands">
+            <code>taiwanmd contribute 新主題</code>
+            <code>taiwanmd validate 珍珠奶茶</code>
+            <code>taiwanmd graph 台灣小吃</code>
           </div>
+          <p>
+            {
+              lang === 'en'
+                ? 'Create articles with guided wizard. Quality check with 6 metrics. Visualize knowledge links.'
+                : '引導式建立文章、6 指標品質檢查、ASCII 知識圖譜。'
+            }
+          </p>
         </div>
       </div>
 
-      <div class="category-breakdown">
-        <h3>{t('contribute.i18n.category.title')}</h3>
-        <div class="category-grid">
-          {
-            Object.entries(i18nProgress.categories)
-              .filter(
-                ([cat]) =>
-                  !['root', 'es', 'en', 'ja', 'ko', 'About'].includes(cat),
-              )
-              .map(([category, counts]) => (
-                <div class="category-item">
-                  <span class="category-name">{category}</span>
-                  <div class="category-progress">
-                    <div class="progress-bar mini">
-                      <div
-                        class="progress-fill"
-                        style={`width: ${counts.zh ? (counts.en / counts.zh) * 100 : 0}%`}
-                      />
-                    </div>
-                    <span class="category-count">
-                      {counts.en}/{counts.zh}
-                    </span>
-                  </div>
-                </div>
-              ))
-          }
-        </div>
+      <div class="cli-footer">
+        <a
+          href="https://www.npmjs.com/package/taiwanmd"
+          target="_blank"
+          class="cli-link"
+        >
+          📦 npm
+        </a>
+        <a
+          href="https://github.com/frank890417/taiwan-md/tree/main/cli"
+          target="_blank"
+          class="cli-link"
+        >
+          🐙 GitHub
+        </a>
+        <a
+          href="https://github.com/frank890417/taiwan-md/discussions/270"
+          target="_blank"
+          class="cli-link"
+        >
+          💬 {lang === 'en' ? 'Discussion' : '討論'}
+        </a>
       </div>
     </div>
   </section>
@@ -1438,137 +1472,120 @@ const t = useTranslations(lang);
   }
 
   /* i18n Progress Section */
-  .i18n-progress-section {
-    padding: 3rem 2rem;
-    background: linear-gradient(135deg, #e8f5e8, #f0f7e6);
+  /* CLI Section */
+  .cli-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #e0e0e0;
   }
-  .i18n-inner {
-    max-width: 800px;
+  .cli-inner {
+    max-width: 900px;
     margin: 0 auto;
   }
-  .i18n-progress-section h2 {
+  .cli-section h2 {
     text-align: center;
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
-    color: #2d5016;
+    color: #00d4aa;
     font-weight: 700;
   }
-  .i18n-desc {
+  .cli-desc {
     text-align: center;
-    color: #4a5d23;
+    color: #a0b4c8;
     margin-bottom: 2rem;
     font-size: 1.05rem;
   }
-  .progress-overview {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 16px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    border: 2px solid #a7c4a0;
-  }
-  .progress-main h3 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    color: #2d5016;
+  .cli-install {
     text-align: center;
-    font-weight: 700;
+    margin-bottom: 2.5rem;
   }
-  .progress-bar {
-    width: 100%;
-    height: 24px;
-    background: rgba(167, 196, 160, 0.2);
+  .cli-install code {
+    display: inline-block;
+    background: rgba(0, 212, 170, 0.1);
+    border: 2px solid #00d4aa;
     border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 0.75rem;
-  }
-  .progress-fill {
-    height: 100%;
-    background: #4a7c59;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 0.85rem;
-    font-weight: 700;
-    transition: width 0.8s ease;
-  }
-  .progress-fill.english {
-    background: linear-gradient(90deg, #4a7c59, #6b8e23);
-  }
-  .progress-detail {
-    text-align: center;
-    color: #4a5d23;
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-  }
-  .progress-other {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  .progress-item {
-    text-align: center;
-  }
-  .progress-item span {
-    display: block;
-    font-size: 0.9rem;
-    color: #4a5d23;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-  }
-  .progress-bar.empty .progress-fill {
-    background: #d1d5db;
-    color: #6b7280;
-  }
-  .progress-bar.mini {
-    height: 16px;
-  }
-  .category-breakdown {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 16px;
-    padding: 2rem;
-    border: 2px solid #a7c4a0;
-  }
-  .category-breakdown h3 {
+    padding: 0.8rem 2rem;
     font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    color: #2d5016;
-    text-align: center;
+    color: #00d4aa;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .cli-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .cli-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition:
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
+  .cli-card:hover {
+    border-color: #00d4aa;
+    transform: translateY(-2px);
+  }
+  .cli-card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  .cli-card h3 {
+    font-size: 1.15rem;
+    color: #fff;
+    margin-bottom: 0.75rem;
     font-weight: 700;
   }
-  .category-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  .category-item {
+  .cli-commands {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 0.35rem;
+    margin-bottom: 0.75rem;
   }
-  .category-name {
-    font-size: 0.85rem;
-    color: #4a5d23;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
+  .cli-commands code {
+    display: block;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.82rem;
+    color: #7ddfb8;
+    font-family: 'SF Mono', 'Fira Code', monospace;
   }
-  .category-progress {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    width: 100%;
-  }
-  .category-progress .progress-bar {
-    flex: 1;
+  .cli-card p {
+    font-size: 0.9rem;
+    color: #a0b4c8;
+    line-height: 1.5;
     margin: 0;
   }
-  .category-count {
-    font-size: 0.75rem;
-    color: #6b8e23;
-    font-weight: 700;
-    min-width: 40px;
-    text-align: right;
+  .cli-footer {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .cli-link {
+    display: inline-block;
+    background: rgba(0, 212, 170, 0.1);
+    border: 1px solid rgba(0, 212, 170, 0.3);
+    border-radius: 8px;
+    padding: 0.5rem 1.2rem;
+    color: #00d4aa;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.2s ease;
+  }
+  .cli-link:hover {
+    background: rgba(0, 212, 170, 0.2);
+  }
+  @media (max-width: 640px) {
+    .cli-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   /* Digital Organism Brief Section */

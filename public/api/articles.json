@@ -2052,13 +2052,13 @@
   },
   {
     "title": "台灣新媒體藝術",
-    "description": "當黃心健的VR作品在威尼斯拿下最佳體驗獎時，很少人知道：推動這場革命的不是科技業，而是一群用程式碼寫詩的藝術家。台灣新媒體藝術20年來的發展軌跡，揭示了科技與人文結合的另一種可能性。",
+    "description": "從1980年代錄像先驅到威尼斯VR大獎，16位關鍵藝術家與40年數位藝術革命的完整脈絡。台灣如何用程式碼寫詩，在國際藝術版圖刻下自己的名字。",
     "category": "Art",
     "tags": [],
     "url": "https://taiwan.md/Art/%E5%8F%B0%E7%81%A3%E6%96%B0%E5%AA%92%E9%AB%94%E8%97%9D%E8%A1%93",
-    "readingTime": 20,
+    "readingTime": 33,
     "featured": true,
-    "date": "2026-03-24",
+    "date": "2026-03-28",
     "path": "Art/台灣新媒體藝術.md"
   },
   {
@@ -2258,17 +2258,6 @@
     "featured": true,
     "date": "2026-03-23",
     "path": "Art/台灣電影.md"
-  },
-  {
-    "title": "台灣實驗與新媒體藝術",
-    "description": "從錄像藝術到VR互動，探索台灣新媒體藝術的創新發展與科技藝術生態",
-    "category": "Art",
-    "tags": [],
-    "url": "https://taiwan.md/Art/%E5%8F%B0%E7%81%A3%E5%AF%A6%E9%A9%97%E8%88%87%E6%96%B0%E5%AA%92%E9%AB%94%E8%97%9D%E8%A1%93",
-    "readingTime": 25,
-    "featured": true,
-    "date": "2026-03-18",
-    "path": "Art/台灣實驗與新媒體藝術.md"
   },
   {
     "title": "台灣滷肉飯",
@@ -4285,6 +4274,17 @@
     "path": "People/曾雅妮.md"
   },
   {
+    "title": "測試文章",
+    "description": "關於測試文章的介紹與說明",
+    "category": "Language",
+    "tags": [],
+    "url": "https://taiwan.md/Language/%E6%B8%AC%E8%A9%A6%E6%96%87%E7%AB%A0",
+    "readingTime": 1,
+    "featured": false,
+    "date": "2026-03-28",
+    "path": "Language/測試文章.md"
+  },
+  {
     "title": "無名小站：從學生宿舍到台灣網路記憶的守護者",
     "description": "一個被「撿破爛」起家的學生專案，如何成為影響整整一代台灣人的社群平台？",
     "category": "Culture",
@@ -4463,17 +4463,6 @@
     "featured": true,
     "date": "2026-03-18",
     "path": "Economy/新創生態系.md"
-  },
-  {
-    "title": "新媒體藝術",
-    "description": "台灣數位藝術的先鋒探索，從實驗室到國際舞台的科技與人文融合",
-    "category": "Art",
-    "tags": ["藝術", "新媒體", "數位藝術", "科技藝術", "互動藝術"],
-    "url": "https://taiwan.md/Art/%E6%96%B0%E5%AA%92%E9%AB%94%E8%97%9D%E8%A1%93",
-    "readingTime": 16,
-    "featured": false,
-    "date": "2026-03-17",
-    "path": "Art/新媒體藝術.md"
   },
   {
     "title": "楊右任：從街頭塗鴉中輟生到非洲舊鞋救命的台灣青年英雄",

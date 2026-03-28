@@ -2,12 +2,12 @@
   "languages": ["zh-TW", "en", "es", "ja"],
   "summary": {
     "zh-TW": {
-      "total": 415,
+      "total": 413,
       "percentage": 100
     },
     "en": {
       "total": 479,
-      "percentage": 115.4
+      "percentage": 116
     },
     "es": {
       "total": 34,
@@ -26,7 +26,7 @@
       "ja": 0
     },
     "art": {
-      "zh-TW": 26,
+      "zh-TW": 24,
       "en": 58,
       "es": 1,
       "ja": 0
@@ -100,6 +100,7 @@
   },
   "missing": {
     "en": [
+      "Art/台灣新媒體藝術.md",
       "Food/台灣小吃.md",
       "Music/流行音樂與金曲獎.md",
       "People/林宥嘉：在苦情歌王與『愛是王』之間，那場長達八年的自我救贖.md",
@@ -136,7 +137,6 @@
       "Art/台灣傳統藝術.md",
       "Art/台灣散文.md",
       "Art/台灣文學史.md",
-      "Art/台灣新媒體藝術.md",
       "Art/台灣策展人與藝術文化建構.md",
       "Art/戰後台灣文學.md",
       "Art/當代台灣文學：破格與重構的年代.md",
@@ -418,7 +418,6 @@
       "Technology/台灣資安產業發展.md",
       "Technology/台灣音響產業發展.md",
       "Technology/鍵盤上的文明衝突：東亞文字輸入法的百年演化.md",
-      "Art/台灣實驗與新媒體藝術.md",
       "Art/台灣當代文學發展.md",
       "Art/台灣當代雕塑發展.md",
       "Art/日治時期台灣文學.md",
@@ -509,6 +508,7 @@
       "Society/台灣社區與里文化.md"
     ],
     "es": [
+      "Art/台灣新媒體藝術.md",
       "Food/台灣小吃.md",
       "Music/流行音樂與金曲獎.md",
       "People/林宥嘉：在苦情歌王與『愛是王』之間，那場長達八年的自我救贖.md",
@@ -545,7 +545,6 @@
       "Art/台灣傳統藝術.md",
       "Art/台灣散文.md",
       "Art/台灣文學史.md",
-      "Art/台灣新媒體藝術.md",
       "Art/台灣策展人與藝術文化建構.md",
       "Art/戰後台灣文學.md",
       "Art/當代台灣文學：破格與重構的年代.md",
@@ -829,7 +828,6 @@
       "Technology/台灣資安產業發展.md",
       "Technology/台灣音響產業發展.md",
       "Technology/鍵盤上的文明衝突：東亞文字輸入法的百年演化.md",
-      "Art/台灣實驗與新媒體藝術.md",
       "Art/台灣當代文學發展.md",
       "Art/台灣當代雕塑發展.md",
       "Art/日治時期台灣文學.md",
@@ -891,7 +889,6 @@
       "Technology/台灣電子商務與數位支付生態系：從PC家到蝦皮的數位商業進化.md",
       "About/看見台灣 — 歷史上的台灣印象.md",
       "About/緣起故事 — Taiwan.md 的誕生.md",
-      "Art/新媒體藝術.md",
       "Art/台灣當代藝術.md",
       "Culture/族群（閩南客家原住民外省新住民）.md",
       "Geography/氣候.md",
@@ -921,6 +918,7 @@
       "Society/台灣社區與里文化.md"
     ],
     "ja": [
+      "Art/台灣新媒體藝術.md",
       "Food/台灣小吃.md",
       "Music/流行音樂與金曲獎.md",
       "People/林宥嘉：在苦情歌王與『愛是王』之間，那場長達八年的自我救贖.md",
@@ -958,7 +956,6 @@
       "Art/台灣傳統藝術.md",
       "Art/台灣散文.md",
       "Art/台灣文學史.md",
-      "Art/台灣新媒體藝術.md",
       "Art/台灣策展人與藝術文化建構.md",
       "Art/戰後台灣文學.md",
       "Art/當代台灣文學：破格與重構的年代.md",
@@ -1244,7 +1241,6 @@
       "Technology/台灣資安產業發展.md",
       "Technology/台灣音響產業發展.md",
       "Technology/鍵盤上的文明衝突：東亞文字輸入法的百年演化.md",
-      "Art/台灣實驗與新媒體藝術.md",
       "Art/台灣當代文學發展.md",
       "Art/台灣當代雕塑發展.md",
       "Art/日治時期台灣文學.md",
@@ -1306,7 +1302,6 @@
       "Technology/台灣電子商務與數位支付生態系：從PC家到蝦皮的數位商業進化.md",
       "About/看見台灣 — 歷史上的台灣印象.md",
       "About/緣起故事 — Taiwan.md 的誕生.md",
-      "Art/新媒體藝術.md",
       "Art/台灣當代藝術.md",
       "Culture/族群（閩南客家原住民外省新住民）.md",
       "Food/牛肉麵.md",
