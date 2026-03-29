@@ -17,51 +17,30 @@
 ## 流程
 
 ```
-git pull → 選文（佇列最前面未重寫的）→ REWRITE-PIPELINE 三階段 → quality-scan 驗證 → sync → push
+git pull → 選文 → REWRITE-PIPELINE 三階段 → quality-scan → sync → push
 ```
 
-### Step 1：拉最新 + 讀規範
+### Step 1：拉最新 + 選文
 
 ```bash
 cd ~/taiwan-md && git pull
-cat docs/editorial/REWRITE-PIPELINE.md
-```
-
-Pipeline 會告訴你每個 Stage 要讀哪個文件。
-
-### Step 2：選文
-
-```bash
-# 佇列
+# 佇列頂端，跳過已重寫的
 head -30 scripts/tools/rewrite-queue.txt
-# 已完成的（跳過）
 git log --oneline --since='2026-03-20' | grep -i 'rewrite:' | head -30
 ```
 
-從佇列頂端開始，跳過已有 rewrite commit 的。
+### Step 2：執行三階段
 
-### Step 3：執行三階段
+**嚴格按照 [`docs/editorial/REWRITE-PIPELINE.md`](../editorial/REWRITE-PIPELINE.md)**。
+Pipeline 會告訴你每個 Stage 要讀哪個文件（RESEARCH.md → EDITORIAL.md → QUALITY-CHECKLIST.md）。
 
-嚴格按照 `docs/editorial/REWRITE-PIPELINE.md`：
-
-- **Stage 0**（進化模式）：舊文素材萃取 → 事實清單 + 缺口列表
-- **Stage 1**：研究（讀 `docs/editorial/RESEARCH-TEMPLATE.md`）
-- **Stage 2**：寫作（讀 `EDITORIAL.md`，前 300 行）
-- **Stage 3**：驗證（讀 `docs/editorial/QUALITY-CHECKLIST.md`）
-
-### Step 4：驗證 + Commit
+### Step 3：Commit
 
 ```bash
-cd ~/taiwan-md
 bash scripts/core/sync.sh
-bash scripts/tools/quality-scan.sh --json 2>&1 | python3 -c "
-import json,sys
-d=json.load(sys.stdin)
-for f in d['files']:
-    if '文章名' in f['file']:
-        print(f'Score: {f[\"score\"]}')"
-git add knowledge/Art/文章名.md src/content/zh-TW/Art/
-git commit -m "rewrite: [文章名] — EDITORIAL v4 + Pipeline v2.2"
+bash scripts/tools/quality-scan.sh knowledge/[Category]/[文章名].md  # ≤ 3 才 commit
+git add knowledge/[Category]/[文章名].md src/content/
+git commit -m "rewrite: [文章名] — EDITORIAL v4 + Pipeline v2.3"
 git push
 ```
 
@@ -114,6 +93,7 @@ Build 由 CI/CD 處理。sub-agent 跑 build 容易 timeout 且浪費資源。
 | 檔案                                  | 用途                   |
 | ------------------------------------- | ---------------------- |
 | `docs/editorial/REWRITE-PIPELINE.md`  | 完整三階段流程（SSOT） |
+| `docs/editorial/RESEARCH.md`          | 研究方法論             |
 | `docs/editorial/RESEARCH-TEMPLATE.md` | Stage 1 研究筆記模板   |
 | `EDITORIAL.md`                        | 品質標準               |
 | `docs/editorial/QUALITY-CHECKLIST.md` | Stage 3 驗證清單       |
