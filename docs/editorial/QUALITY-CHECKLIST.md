@@ -132,5 +132,5 @@ git push
 
 ---
 
-_版本：v1.0 | 2026-03-24_
-_配套：REWRITE-PIPELINE.md（流程）+ EDITORIAL.md（品質標準）+ RESEARCH-TEMPLATE.md（研究模板）_
+_版本：v1.1 | 2026-03-29_
+_配套：RESEARCH.md（研究方法論）+ REWRITE-PIPELINE.md（流程）+ EDITORIAL.md（品質標準）+ RESEARCH-TEMPLATE.md（研究模板）_
